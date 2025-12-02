@@ -67,7 +67,7 @@ export default function ContactSection() {
                         <p className="text-[#1F1919]/60 text-sm uppercase tracking-wide mb-4">CONTACT</p>
                         <AnimatedText 
                             as="h2" 
-                            className="text-3xl lg:text-5xl xl:text-6xl font-bold text-[#1F1919] leading-tight"
+                            className="text-3xl lg:text-5xl xl:text-6xl font-bold text-[#1F1919] leading-none"
                             stagger={0.04}
                             start="top 85%"
                         >

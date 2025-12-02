@@ -11,17 +11,20 @@ const cards = [
     {
         title: 'World nuclear',
         subtitle: 'exhibition',
-        year: '2025'
+        year: '2021',
+        image: '/images/fotky/wne2021.jpg'
     },
     {
         title: 'World nuclear',
         subtitle: 'exhibition',
-        year: '2026'
+        year: '2023',
+        image: '/images/fotky/wne2023.jpg'
     },
     {
         title: 'World nuclear',
         subtitle: 'exhibition',
-        year: '2027'
+        year: '2025',
+        image: '/images/fotky/wne2025.jpg'
     }
 ];
 
@@ -275,7 +278,7 @@ export default function ExhibitionCards() {
                                     
                                     <div className="w-1/2 bg-[#1D1D1D] rounded-r-2xl relative overflow-hidden h-full">
                                         <Image
-                                            src="/images/desert.png"
+                                            src={card.image}
                                             alt={`${card.title} ${card.subtitle} ${card.year}`}
                                             fill
                                             className="object-cover h-full rounded-[13px]"

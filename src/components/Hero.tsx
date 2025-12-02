@@ -95,7 +95,7 @@ export default function Hero() {
                 <div className="max-w-none mx-auto relative z-20 text-center">
                     <AnimatedText 
                         as="h1" 
-                        className="text-7xl lg:text-8xl font-bold leading-[1.1] mb-8 text-[#1F1919]"
+                        className="text-7xl lg:text-8xl font-bold leading-none mb-8 text-[#1F1919]"
                         stagger={0.015}
                         duration={0.6}
                         start="top 95%"
@@ -110,7 +110,7 @@ export default function Hero() {
                     <div className="flex justify-center mb-12 hero-text">
                         <button ref={buttonRef} className="flex items-center gap-0 group">
                             <span className="px-6 py-3 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-base group-hover:bg-[#368391] transition-colors whitespace-nowrap">
-                                Register
+                                Get ready to 2027
                             </span>
                             <span className="w-[3rem] h-[3rem] rounded-full bg-[#1F1919] group-hover:bg-[#368391] flex items-center justify-center transition-colors flex-shrink-0">
                                 <svg width="17" height="17" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-[#F0F0F0]">
@@ -171,8 +171,21 @@ export default function Hero() {
                 {/* Overlay Gradient */}
                 <div className="absolute inset-0 bg-[#1F1919]/10"></div>
 
-                {/* SVG Mask Bubble - Top Left */}
-                <div className="absolute top-8 left-8 z-20 group">
+                {/* Badge */}
+                <div className="absolute top-8 left-8 lg:top-12 lg:left-12 bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 z-30 flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#4B5563"/>
+                        </svg>
+                    </div>
+                    <div className="text-[#1F1919]">
+                        <p className="text-lg font-bold mb-1">07-09 December 2027</p>
+                        <p className="text-xs text-[#1F1919]/70 leading-tight">Parc des Expositions - Hall 6 - Villepinte</p>
+                    </div>
+                </div>
+
+                {/* SVG Mask Bubble - Top Right */}
+                <div className="absolute top-8 right-8 z-20 group">
                     <svg width="250" height="188" viewBox="0 0 151 103" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[250px] h-[188px]">
                         <defs>
                             <clipPath id="imageClip">
@@ -194,8 +207,8 @@ export default function Hero() {
                         
                         {/* Title - Bottom Right inside SVG with padding */}
                         <text x="83" y="82" fill="#1F1919" fontSize="9" fontWeight="500" fontFamily="Nohemi, sans-serif">
-                            <tspan x="83" dy="0">We & Our</tspan>
-                            <tspan x="83" dy="11">Volunteers</tspan>
+                            <tspan x="83" dy="0">View Our</tspan>
+                            <tspan x="83" dy="11">Program</tspan>
                         </text>
                         
                         <circle cx="136" cy="15" r="15" fill="#D7DF21" className="group-hover:fill-[#1F1919] transition-colors" />
@@ -211,16 +224,19 @@ export default function Hero() {
                 {/* Bottom Right Socials */}
                 <div className="absolute bottom-8 right-8 flex items-center gap-4 text-[#F0F0F0]">
                     <div className="flex gap-2">
-                        <div className="w-10 h-10 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm">📷</div>
-                        <div className="w-10 h-10 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm">f</div>
+                        <a href="#" className="w-10 h-10 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                            <Image src="/images/X.svg" alt="X (Twitter)" width={20} height={20} className="w-5 h-5 brightness-0 invert" />
+                        </a>
+                        <a href="#" className="w-10 h-10 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                            <Image src="/images/011-linkedin.svg" alt="LinkedIn" width={20} height={20} className="w-5 h-5 brightness-0 invert" />
+                        </a>
+                        <a href="#" className="w-10 h-10 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                            <Image src="/images/021-youtube.svg" alt="YouTube" width={20} height={20} className="w-5 h-5 brightness-0 invert" />
+                        </a>
                     </div>
                     <span className="text-sm font-medium">Find us on social networks</span>
                 </div>
 
-                {/* Top Right Icon */}
-                <div className="absolute top-8 right-8 w-12 h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center text-[#F0F0F0] backdrop-blur-sm">
-                    ♨
-                </div>
             </div>
         </div>
     );

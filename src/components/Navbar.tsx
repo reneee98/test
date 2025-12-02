@@ -167,7 +167,7 @@ const NavLink = ({ href, children, active, textColor }: NavLinkProps) => {
             href={href}
             className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${textColor} ${
                 active ? 'bg-white/80 backdrop-blur-sm' : 'hover:bg-white/20'
-            }`}
+                }`}
         >
             {active && <span className="inline-block w-1.5 h-1.5 bg-current rounded-full mr-2 mb-0.5"></span>}
             {children}

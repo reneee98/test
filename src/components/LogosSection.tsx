@@ -66,21 +66,23 @@ export default function LogosSection() {
         if (!textElement) return;
 
         // Počkáme na načtení fontů
+        let tl: gsap.core.Timeline | null = null;
+
         document.fonts.ready.then(() => {
             const textWidth = textElement.offsetWidth;
             const gap = 80; // Mezera mezi texty
 
-            // Duplikujeme text několikrát pro plynulý přechod
+            // Duplikujeme text pre plynulý nekonečný prechod
             // Vyčistíme předchozí duplikáty pokud existují (pro hot reload)
             const existingDuplicates = container.querySelectorAll('[aria-hidden="true"]');
             existingDuplicates.forEach(el => el.remove());
 
             const texts = [textElement];
-            // Potřebujeme dostatek kopií, aby pokryly celou šířku obrazovky + buffer
+            const totalWidth = textWidth + gap;
             const screenWidth = window.innerWidth;
-            const copiesNeeded = Math.ceil(screenWidth / (textWidth + gap)) + 1;
-
-            for (let i = 0; i < copiesNeeded; i++) {
+            
+            // Vytvoríme 2 kópie pre plynulú slučku
+            for (let i = 0; i < 2; i++) {
                 const duplicatedText = textElement.cloneNode(true) as HTMLHeadingElement;
                 duplicatedText.setAttribute('aria-hidden', 'true');
                 duplicatedText.style.marginLeft = `${gap}px`;
@@ -88,71 +90,63 @@ export default function LogosSection() {
                 texts.push(duplicatedText);
             }
 
-            // Nastavíme počáteční pozici
-            let currentX = 0;
-
-            texts.forEach((text) => {
+            // Nastavíme počáteční pozície - texty začínaú úplne vpravo (mimo viewport)
+            // Prvý text začína úplne vpravo, ďalšie sú za ním
+            texts.forEach((text, i) => {
                 gsap.set(text, {
-                    x: currentX,
+                    x: screenWidth + (i * totalWidth),
                     force3D: true,
                     willChange: 'transform'
                 });
-                currentX += textWidth + gap;
             });
 
-            // Animace - posun zprava doleva (standardní marquee) nebo zleva doprava
-            // Zde implementujeme zleva doprava dle původního kódu
-            const totalWidth = textWidth + gap;
-
-            const tl = gsap.timeline({
+            // Animácia - posun z prava do ľava (nekonečná slučka)
+            // Použijeme jednoduchší prístup s jednou timeline a onRepeat
+            // Ale resetujeme texty len keď je to potrebné a bez bliknutia
+            tl = gsap.timeline({
                 repeat: -1,
-                ease: 'none'
-            });
-
-            tl.to(texts, {
-                x: `+=${totalWidth}`, // Posuneme o jednu délku textu
-                duration: 15,
                 ease: 'none',
-                force3D: true,
-                modifiers: {
-                    x: (x) => {
-                        const numX = parseFloat(x);
-                        // Reset pozice pro nekonečnou smyčku
-                        const modX = numX % (totalWidth * texts.length);
-                        // Pokud jsme moc vpravo, vrátíme se na začátek (nebo naopak)
-                        // Pro zjednodušení použijeme gsap.utils.wrap nebo jednoduchý modulo
-                        return `${numX % totalWidth}`;
-                    }
+                onRepeat: function() {
+                    // Pri každom opakovaní resetujeme texty, ktoré zmizli vľavo
+                    // Použijeme requestAnimationFrame pre plynulý prechod bez bliknutia
+                    requestAnimationFrame(() => {
+                        texts.forEach((text) => {
+                            const currentX = gsap.getProperty(text, "x") as number;
+                            // Ak text zmizol vľavo (je úplne mimo viewport - posledné písmeno zmizlo)
+                            if (currentX < -textWidth) {
+                                // Nájdeme najväčšiu x pozíciu (najpravejší text)
+                                let maxX = -Infinity;
+                                texts.forEach(t => {
+                                    const tx = gsap.getProperty(t, "x") as number;
+                                    if (tx > maxX && tx < screenWidth + totalWidth * 3) {
+                                        maxX = tx;
+                                    }
+                                });
+                                // Presunieme text na pravú stranu za najpravejší text
+                                gsap.set(text, { 
+                                    x: maxX + totalWidth,
+                                    immediateRender: false
+                                });
+                            }
+                        });
+                    });
                 }
             });
 
-            // Jednodušší implementace marquee pomocí gsap.to
-            // Resetujeme timeline a uděláme to jednodušeji
-            tl.clear();
-
-            // Nastavíme výchozí pozice
-            texts.forEach((text, i) => {
-                gsap.set(text, { x: i * totalWidth });
-            });
-
-            // Animujeme všechny doleva (nebo doprava)
-            // Chceme aby to jelo, takže posouváme x
+            // Animujeme všetky texty doľava o celú dĺžku textu
+            // Text prejde celou obrazovkou z prava do ľava
             tl.to(texts, {
-                x: `+=${totalWidth}`,
-                duration: 10,
+                x: `-=${totalWidth}`,
+                duration: 15,
                 ease: "none",
-                modifiers: {
-                    x: gsap.utils.unitize(x => {
-                        return parseFloat(x) % (totalWidth * texts.length) - totalWidth;
-                    })
-                },
-                repeat: -1
+                force3D: true
             });
-
-            return () => {
-                tl.kill();
-            };
         });
+
+        // Cleanup pre celý useEffect
+        return () => {
+            if (tl) tl.kill();
+        };
     }, []);
 
     // Animace při načtení sekce
@@ -313,14 +307,14 @@ export default function LogosSection() {
     }, [logoStates.length]); // Pouze délka jako dependency
 
     return (
-        <section ref={sectionRef} className="relative w-full bg-white pt-16 lg:pt-24 pb-0 px-6 lg:px-12">
+        <section ref={sectionRef} className="relative w-full bg-white pt-16 lg:pt-24 pb-0">
             <div className="w-full">
                 {/* Header - Text slider */}
                 <div ref={headerRef} className="mb-12 lg:mb-16 overflow-hidden w-full">
                     <div ref={textSliderRef} className="relative whitespace-nowrap flex items-center w-full">
                         <AnimatedText 
                             as="h1" 
-                            className="text-7xl lg:text-8xl font-bold text-[#1F1919] leading-[1.1] inline-block whitespace-nowrap"
+                            className="text-7xl lg:text-8xl font-bold text-[#1F1919] leading-[1.0] inline-block whitespace-nowrap"
                             stagger={0.02}
                             start="top 90%"
                         >
@@ -330,7 +324,7 @@ export default function LogosSection() {
                 </div>
 
                 {/* Grid 2x4 - 8 boxů s logy */}
-                <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-0">
+                <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-0 px-6 lg:px-12 pb-12 lg:pb-16">
                     {Array.from({ length: 8 }).map((_, index) => {
                         // Fallback na index pokud logoStates ještě není inicializováno
                         const fallbackIndex = index % allLogos.length;

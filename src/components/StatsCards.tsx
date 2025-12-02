@@ -88,7 +88,7 @@ export default function StatsCards() {
                     <div className="flex-shrink-0">
                         <AnimatedText 
                             as="h1" 
-                            className="text-7xl lg:text-8xl font-bold text-white leading-[1.1]"
+                            className="text-7xl lg:text-8xl font-bold text-white leading-[1.0]"
                             stagger={0.04}
                             start="top 90%"
                         >
@@ -125,6 +125,15 @@ export default function StatsCards() {
                                             <Image
                                                 src="/images/desert.png"
                                                 alt="Background"
+                                                fill
+                                                className="object-cover"
+                                                sizes="(max-width: 768px) 100vw, 33vw"
+                                            />
+                                        </div>
+                                        <div className="absolute inset-0 z-0">
+                                            <Image
+                                                src="/images/fotky/keyfigures.jpg"
+                                                alt="Key figures background"
                                                 fill
                                                 className="object-cover"
                                                 sizes="(max-width: 768px) 100vw, 33vw"

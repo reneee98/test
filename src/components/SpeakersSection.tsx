@@ -17,62 +17,62 @@ const speakers = [
     {
         name: 'MONIQUE BARBUT',
         role: '',
-        image: '/images/portretovky/woman-wearing-blue-shirt-with-gold-necklace-it.jpg'
+        image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'ROLAND LESCURE',
         role: 'Minister for Ecological Transition, Biodiversity and International Negotiations on Climate and Nature for France',
-        image: '/images/portretovky/woman-wearing-blue-shirt-with-gold-necklace-it.jpg'
+        image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'SYLVIE BERMANN',
         role: '',
-        image: '/images/portretovky/woman-wearing-blue-shirt-with-gold-necklace-it.jpg'
+        image: '/images/portretovky/portrait3.png'
     },
     {
         name: 'CÉDRIC KLAPISCH',
         role: 'DIRECTOR • SCREENWRITER • PRODUCER',
-        image: '/images/portretovky/middle-aged-man-wearing-jacket-laughing-happy.jpg'
+        image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'ELISHA KARMITZ',
         role: 'PRODUCER - CHIEF EXECUTIVE OFFICER OF MK2',
-        image: '/images/portretovky/middle-aged-man-wearing-leaning-against-rusty-colored-background.jpg'
+        image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'ANA GIRARDOT',
         role: 'ACTRESS',
-        image: '/images/portretovky/portrait-beautiful-albino-woman.jpg'
+        image: '/images/portretovky/portrait3.png'
     },
     {
         name: 'BRUNO PATINO',
         role: 'CEO OF ARTE FRANCE - JOURNALIST AND MEDIA EXECUTIVE',
-        image: '/images/portretovky/happy-woman-home-coronavirus-quarantine.jpg'
+        image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'JUNIE LAU',
         role: 'ARTIST',
-        image: '/images/portretovky/portrait-dream-lovely-pretty-girl-calm-look-camera-isolated-blue-background.jpg'
+        image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'RAPHAËL FRYDMAN',
         role: 'FILMMAKER',
-        image: '/images/portretovky/woman-wearing-blue-shirt-with-gold-necklace-it.jpg'
+        image: '/images/portretovky/portrait3.png'
     },
     {
         name: 'JEAN-PIERRE DARROUSSIN',
         role: 'ACTOR • DIRECTOR',
-        image: '/images/portretovky/middle-aged-man-wearing-jacket-laughing-happy.jpg'
+        image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'MARION COTILLARD',
         role: 'ACTRESS • PRODUCER',
-        image: '/images/portretovky/portrait-beautiful-albino-woman.jpg'
+        image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'LÉA SEYDOUX',
         role: 'ACTRESS',
-        image: '/images/portretovky/woman-wearing-blue-shirt-with-gold-necklace-it.jpg'
+        image: '/images/portretovky/portrait3.png'
     },
 ];
 
@@ -244,14 +244,24 @@ export default function SpeakersSection() {
             <div className="relative z-10 w-full">
                 {/* Header */}
                 <div className="mb-8 lg:mb-12 text-center px-6 lg:px-12">
-                    <AnimatedText 
-                        as="h1" 
-                        className="text-7xl lg:text-8xl font-bold leading-[1.1]"
-                        stagger={0.025}
-                        start="top 85%"
-                    >
-                        Among key speakers of the edition
-                    </AnimatedText>
+                    <h1 className="text-7xl lg:text-8xl font-bold leading-[1.0]">
+                        <AnimatedText 
+                            as="span" 
+                            className="block"
+                            stagger={0.025}
+                            start="top 85%"
+                        >
+                            Among key speakers
+                        </AnimatedText>
+                        <AnimatedText 
+                            as="span" 
+                            className="block"
+                            stagger={0.025}
+                            start="top 85%"
+                        >
+                            of the edition
+                        </AnimatedText>
+                    </h1>
                 </div>
 
                 {/* Swiper Slider */}
@@ -283,7 +293,7 @@ export default function SpeakersSection() {
                                         <div 
                                             className="portrait-bg relative h-[480px] lg:h-[600px] transition-colors duration-300 bg-gray-200 group-hover:bg-[#D7DF21] flex items-center justify-center overflow-visible rounded-3xl p-8 pb-24"
                                             style={{
-                                                backgroundImage: `url('/images/portretovky/portrait-png.png')`,
+                                                backgroundImage: `url('${speaker.image}')`,
                                                 backgroundSize: 'cover',
                                                 backgroundPosition: 'center',
                                                 backgroundRepeat: 'no-repeat'

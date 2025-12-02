@@ -11,8 +11,17 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <main className="w-full min-h-screen bg-white">
-      <SmoothScroll />
-      <Navbar />
+      {/* Mobile Demo Message */}
+      <div className="lg:hidden fixed inset-0 bg-white flex items-center justify-center z-50">
+        <p className="text-[#1F1919] text-base font-medium text-center px-6">
+          DEMO DEVELOPMENT BY WEPEAK.EU
+        </p>
+      </div>
+
+      {/* Desktop Content */}
+      <div className="hidden lg:block">
+        <SmoothScroll />
+        <Navbar />
         <Hero />
         <CleanWorld />
         <StatsCards />
@@ -20,6 +29,7 @@ export default function Home() {
         <LogosSection />
         <ExhibitionCards />
         <Footer />
+      </div>
     </main>
   );
 }

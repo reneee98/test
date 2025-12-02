@@ -56,27 +56,35 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12">
                     {/* Left Column - Navigation */}
                     <div ref={(el) => { if (el) columnsRef.current[0] = el; }}>
-                        <div className="flex items-center gap-2 mb-6">
-                            <span className="text-white/50 text-sm font-medium">01</span>
-                            <AnimatedText as="h3" className="text-white font-bold text-lg">Our Story</AnimatedText>
-                        </div>
-                        <ul className="space-y-3">
+                        <ul className="space-y-4">
                             <li>
-                                <Link href="/team" className="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors underline">
-                                    <span className="text-white/50 text-sm">02</span>
-                                    Our Team
+                                <Link href="/exhibit" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs">01</span>
+                                    Exhibit
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/projects" className="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors underline">
-                                    <span className="text-white/50 text-sm">03</span>
-                                    Our Projects
+                                <Link href="/program" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs">02</span>
+                                    Program
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/careers" className="flex items-center gap-2 text-white/70 text-sm hover:text-white transition-colors underline">
-                                    <span className="text-white/50 text-sm">04</span>
-                                    Careers
+                                <Link href="/visit" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs">03</span>
+                                    Visit
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/network" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs">04</span>
+                                    Network
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/insights" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs">05</span>
+                                    Insights
                                 </Link>
                             </li>
                         </ul>
@@ -84,42 +92,42 @@ export default function Footer() {
 
                     {/* Middle Column - News & Newsletter */}
                     <div ref={(el) => { if (el) columnsRef.current[1] = el; }}>
-                        <div className="flex items-center gap-2 mb-6">
-                            <span className="text-white/50 text-sm font-medium">04</span>
-                            <AnimatedText as="h3" className="text-white font-bold text-lg">News</AnimatedText>
+                        <div className="flex items-center gap-12 mb-6">
+                            <span className="text-white/50 text-xs font-medium leading-none">06</span>
+                            <AnimatedText as="h3" className="text-white text-[26px] flex items-center leading-none">News</AnimatedText>
                         </div>
                         
                         {/* News Headlines */}
-                        <div className="space-y-4 mb-8">
-                            <Link href="/news/leading-charge" className="block text-white/70 text-sm hover:text-white transition-colors underline">
+                        <div className="space-y-4 mb-8 pl-[calc(12px+3rem)]">
+                            <Link href="/news/leading-charge" className="block text-white/70 text-base hover:text-white transition-colors">
                                 Leading the Charge into South Africa's Liberalised Energy Market
                                 </Link>
-                            <Link href="/news/unlocking-grid" className="block text-white/70 text-sm hover:text-white transition-colors underline">
+                            <Link href="/news/unlocking-grid" className="block text-white/70 text-base hover:text-white transition-colors">
                                 Unlocking Grid Access: How Congestion Curtailment Supports South Africa's Just...
                                 </Link>
                     </div>
 
                         {/* Newsletter */}
-                        <div className="mb-6">
-                            <p className="text-white/70 text-sm leading-relaxed mb-4">
+                        <div className="mb-6 pl-[calc(12px+3rem)]">
+                            <p className="text-white/70 text-base leading-relaxed mb-4">
                                 Join our newsletter to stay updated on Anthem's latest news and releases. By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
                         </p>
                             <form onSubmit={handleSubmit} className="relative">
-                                <div className="flex items-center rounded-full border border-white/30 bg-white/5 overflow-hidden">
+                                <div className="flex items-center rounded-full border border-white/30 overflow-hidden">
                                 <input
                                     type="email"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Enter your email address"
-                                        className="flex-1 px-4 py-3 bg-transparent text-white placeholder-white/50 text-sm focus:outline-none"
+                                        className="flex-1 px-6 py-4 bg-transparent text-white placeholder-white/50 text-base focus:outline-none"
                                         required
                                 />
                                 <button
                                     type="submit"
-                                        className="px-4 py-3 bg-white/10 hover:bg-white/20 transition-colors flex items-center justify-center"
+                                        className="px-6 py-4 bg-transparent hover:opacity-70 transition-opacity flex items-center justify-center"
                                         aria-label="Subscribe"
                                 >
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7.5 15L12.5 10L7.5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                         </svg>
                                 </button>
@@ -130,39 +138,30 @@ export default function Footer() {
 
                     {/* Right Column - Contact Us */}
                     <div ref={(el) => { if (el) columnsRef.current[2] = el; }}>
-                        <div className="flex items-center gap-2 mb-6">
-                            <span className="text-white/50 text-sm font-medium">06</span>
-                            <AnimatedText as="h3" className="text-white font-bold text-lg">Contact Us</AnimatedText>
+                        <div className="flex items-center gap-12 mb-6">
+                            <span className="text-white/50 text-xs font-medium leading-none">07</span>
+                            <AnimatedText as="h3" className="text-white text-[26px] flex items-center leading-none">Contact Us</AnimatedText>
                         </div>
                         
-                        <div className="space-y-6">
+                        <div className="space-y-4 pl-[calc(12px+3rem)]">
                             <div>
-                                <p className="text-white/70 text-sm leading-relaxed mb-2">
-                                    Have a question or need some information? Send us an email at{' '}
-                                    <a href="mailto:info@anthem.co.za" className="text-white underline hover:text-white/80 transition-colors">
-                                        info@anthem.co.za
-                                    </a>
-                                    .
-                                </p>
+                                <Link href="/helpdesk" className="text-white/70 text-base hover:text-white transition-colors block">
+                                    Helpdesk form
+                                </Link>
                             </div>
                             
                             <div>
-                                <p className="text-white/70 text-sm leading-relaxed mb-2">
-                                    Want to chat with us directly? Give us a call at{' '}
-                                    <a href="tel:+27216701400" className="text-white underline hover:text-white/80 transition-colors">
-                                        +27 21 670 1400
-                                    </a>
-                                    .
-                                </p>
+                                <Link href="/faq" className="text-white/70 text-base hover:text-white transition-colors block">
+                                    FAQ
+                                </Link>
                             </div>
                             
                             <div>
-                                <p className="text-white/70 text-sm leading-relaxed">
-                                    2nd Floor Fernwood House,<br />
-                                    the Oval,<br />
-                                    1 Oakdale Rd,<br />
-                                    Newlands,<br />
-                                    Cape Town
+                                <p className="text-white/70 text-base leading-relaxed">
+                                    <a href="tel:+33147565120" className="text-white hover:text-white/80 transition-colors">
+                                        (+33) 1 47 56 51 20
+                                    </a>
+                                    . Our telephone service is open from Monday to Friday, 9am to 6pm CET.
                                 </p>
                             </div>
                         </div>
@@ -173,13 +172,13 @@ export default function Footer() {
                 <div className="pt-8 border-t border-white/10">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <p className="text-white/50 text-sm">
-                            ©2025 by Anthem, All Rights Reserved.
+                            ©2025 design and development by wepeak.eu
                         </p>
                         <div className="flex flex-wrap gap-6">
-                            <Link href="/privacy" className="text-white/50 text-sm hover:text-white transition-colors underline">
+                            <Link href="/privacy" className="text-white/50 text-sm hover:text-white transition-colors">
                                 Privacy Policy
                             </Link>
-                            <Link href="/disclaimer" className="text-white/50 text-sm hover:text-white transition-colors underline">
+                            <Link href="/disclaimer" className="text-white/50 text-sm hover:text-white transition-colors">
                                 Disclaimer
                             </Link>
                         </div>
