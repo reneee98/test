@@ -1,26 +1,256 @@
 @import "tailwindcss";
 
+/* Nohemi Font Face Declarations */
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-Thin-BF6438cc577ef3b.otf') format('opentype'),
+       url('/font/Nohemi-Thin-BF6438cc57e2011.woff') format('woff'),
+       url('/font/Nohemi-Thin-BF6438cc5896c67.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-ExtraLight-BF6438cc57e06d5.otf') format('opentype'),
+       url('/font/Nohemi-ExtraLight-BF6438cc581502c.woff') format('woff'),
+       url('/font/Nohemi-ExtraLight-BF6438cc58a2634.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-Light-BF6438cc583f70b.otf') format('opentype'),
+       url('/font/Nohemi-Light-BF6438cc5702321.woff') format('woff'),
+       url('/font/Nohemi-Light-BF6438cc5899919.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-Regular-BF6438cc58b98fc.otf') format('opentype'),
+       url('/font/Nohemi-Regular-BF6438cc579d934.woff') format('woff'),
+       url('/font/Nohemi-Regular-BF6438cc4d0e493.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-Medium-BF6438cc581a509.otf') format('opentype'),
+       url('/font/Nohemi-Medium-BF6438cc57ddecd.woff') format('woff'),
+       url('/font/Nohemi-Medium-BF6438cc5883899.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-SemiBold-BF6438cc588a48a.ttf') format('truetype'),
+       url('/font/Nohemi-SemiBold-BF6438cc57db2ff.woff') format('woff'),
+       url('/font/Nohemi-SemiBold-BF6438cc588b5e5.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-Bold-BF6438cc5812315.otf') format('opentype'),
+       url('/font/Nohemi-Bold-BF6438cc577b524.woff') format('woff'),
+       url('/font/Nohemi-Bold-BF6438cc587b5b5.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-ExtraBold-BF6438cc58a4c3c.otf') format('opentype'),
+       url('/font/Nohemi-ExtraBold-BF6438cc5761ae2.woff') format('woff'),
+       url('/font/Nohemi-ExtraBold-BF6438cc5881baf.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/font/Nohemi-Black-BF6438cc5874bd2.otf') format('opentype'),
+       url('/font/Nohemi-Black-BF6438cc565e67b.woff') format('woff'),
+       url('/font/Nohemi-Black-BF6438cc58744d4.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F0F0F0;
+  --foreground: #1F1919;
+  --font-nohemi: 'Nohemi', sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-nohemi);
+  --font-mono: var(--font-nohemi);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1F1919;
+    --foreground: #F0F0F0;
   }
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll from animations */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Nohemi', sans-serif;
+}
+
+/* Lenis Recommended Styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Logo Scroll Animations */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right {
+  animation: scroll-right 30s linear infinite;
+}
+
+.animate-scroll-left {
+  animation: scroll-left 30s linear infinite;
+}
+
+/* Masonry Layout Styles */
+.masonry-container {
+  position: relative;
+  margin: 0 auto;
+}
+
+.masonry-container::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.masonry-item {
+  float: left;
+  margin-bottom: 24px;
+  width: calc(20% - 19.2px);
+}
+
+@media (max-width: 1535px) {
+  .masonry-item {
+    width: calc(25% - 18px);
+  }
+}
+
+@media (max-width: 1279px) {
+  .masonry-item {
+    width: calc(33.333% - 16px);
+  }
+}
+
+@media (max-width: 1023px) {
+  .masonry-item {
+    width: calc(50% - 12px);
+  }
+}
+
+@media (max-width: 639px) {
+  .masonry-item {
+    width: 100%;
+  }
+}
+
+/* FilmFestival 3D Carousel - Center slide straight */
+.swiper-3d.swiper-coverflow .swiper-slide-active,
+.swiper-3d.swiper-coverflow .swiper-slide-active * {
+  transform: translate3d(0, 0, 0px) rotateY(0deg) !important;
+  opacity: 1 !important;
+}
+
+.swiper-3d.swiper-coverflow .swiper-slide:not(.swiper-slide-active) {
+  opacity: 0.7;
+}
+
+/* Swiper wrapper height auto */
+.swiper-simple {
+  height: auto !important;
+  overflow: visible !important;
+}
+
+.swiper-simple .swiper-wrapper {
+  height: auto !important;
+  align-items: flex-start !important;
+  display: flex !important;
+}
+
+.swiper-simple .swiper-slide {
+  height: auto !important;
+  display: flex !important;
+  align-items: flex-start !important;
+}
+
+/* Logo Wall Animation */
+.logo-wall__logo {
+  overflow: hidden;
+  position: relative;
 }
