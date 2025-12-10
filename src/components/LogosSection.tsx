@@ -307,14 +307,14 @@ export default function LogosSection() {
     }, [logoStates.length]); // Pouze délka jako dependency
 
     return (
-        <section ref={sectionRef} className="relative w-full bg-white pt-16 lg:pt-24 pb-0">
+        <section ref={sectionRef} className="relative w-full bg-white pt-12 lg:pt-16 xl:pt-24 2xl:pt-32 pb-0">
             <div className="w-full">
                 {/* Header - Text slider */}
-                <div ref={headerRef} className="mb-12 lg:mb-16 overflow-hidden w-full">
+                <div ref={headerRef} className="mb-8 lg:mb-12 xl:mb-16 2xl:mb-20 overflow-hidden w-full">
                     <div ref={textSliderRef} className="relative whitespace-nowrap flex items-center w-full">
                         <AnimatedText 
                             as="h1" 
-                            className="text-7xl lg:text-8xl font-bold text-[#1F1919] leading-[1.0] inline-block whitespace-nowrap"
+                            className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold text-[#1F1919] leading-[1.0] inline-block whitespace-nowrap"
                             stagger={0.02}
                             start="top 90%"
                         >
@@ -324,7 +324,7 @@ export default function LogosSection() {
                 </div>
 
                 {/* Grid 2x4 - 8 boxů s logy */}
-                <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-0 px-6 lg:px-12 pb-12 lg:pb-16">
+                <div ref={gridRef} className="grid grid-cols-2 lg:grid-cols-4 gap-0 px-4 lg:px-6 xl:px-12 2xl:px-16 pb-8 lg:pb-12 xl:pb-16 2xl:pb-20">
                     {Array.from({ length: 8 }).map((_, index) => {
                         // Fallback na index pokud logoStates ještě není inicializováno
                         const fallbackIndex = index % allLogos.length;

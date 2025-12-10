@@ -1,10 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useEffect, useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import type { Swiper as SwiperType } from 'swiper';
-import 'swiper/css';
+import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedText from './AnimatedText';
@@ -78,12 +75,11 @@ const speakers = [
 
 export default function SpeakersSection() {
     const sectionRef = useRef<HTMLElement>(null);
-    const swiperRef = useRef<SwiperType | null>(null);
-    const swiperWrapperRef = useRef<HTMLDivElement | null>(null);
-    const [activeIndex, setActiveIndex] = useState(0);
+    const wrapperRef = useRef<HTMLDivElement>(null);
+    const animationRef = useRef<gsap.core.Timeline | null>(null);
 
     useEffect(() => {
-        if (!sectionRef.current) return;
+        if (!sectionRef.current || !wrapperRef.current) return;
 
         gsap.set(sectionRef.current, { backgroundColor: '#FFFFFF' });
 
@@ -112,99 +108,62 @@ export default function SpeakersSection() {
             });
         }
 
-        let scrollTrigger: ScrollTrigger | null = null;
-        let timeoutId: NodeJS.Timeout | null = null;
-        let isMouseOver = false;
+        // Automatický slider - posúvanie zľava doprava
+        const initAutoSlider = () => {
+            if (!wrapperRef.current) return;
 
-        const initScrollTrigger = () => {
-            if (!swiperRef.current) {
-                timeoutId = setTimeout(initScrollTrigger, 100);
-                return;
-            }
+            const cards = wrapperRef.current.querySelectorAll('.speaker-card');
+            if (cards.length === 0) return;
 
-            const totalSlides = speakers.length;
-            const scrollDistance = (totalSlides - 1) * 1000;
+            // Získame šírku jednej karty a spacing
+            const firstCard = cards[0] as HTMLElement;
+            const cardWidth = firstCard.offsetWidth || 450;
+            const spaceBetween = 80; // Medzera medzi kartami
+            const totalWidth = (cardWidth + spaceBetween) * speakers.length;
+            const viewportWidth = window.innerWidth;
             
-            scrollTrigger = ScrollTrigger.create({
-                trigger: sectionRef.current,
-                start: 'top top',
-                end: () => `+=${scrollDistance}`,
-                scrub: 0.1,
-                pin: true,
-                pinSpacing: true,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                onUpdate: (self) => {
-                    if (!swiperRef.current) return;
-                    
-                    // Scrollování probíhá pouze když je kurzor nad sekcí
-                    if (!isMouseOver) {
-                        // Když kurzor není nad sekcí, zastavíme scrollování
-                        return;
-                    }
-                    
-                    const progress = self.progress;
-                    
-                    const swiper = swiperRef.current;
-                    const slides = swiper.slides;
-                    
-                    if (slides.length > 0 && swiper.wrapperEl) {
-                        const slideWidth = slides[0].offsetWidth || 450;
-                        const spaceBetween = 80;
-                        const viewportWidth = window.innerWidth;
-                        
-                        // Počiatočná pozícia: začína zľava (translateX = 0)
-                        const startX = 0;
-                        
-                        // Koncová pozícia: posledný slide v strede
-                        // Stred posledného slide: (totalSlides - 1) * (slideWidth + spaceBetween) + slideWidth / 2
-                        // Stred viewportu: viewportWidth / 2
-                        // translateX = viewportWidth / 2 - [stred posledného slide]
-                        const lastSlideCenter = (totalSlides - 1) * (slideWidth + spaceBetween) + slideWidth / 2;
-                        const viewportCenter = viewportWidth / 2;
-                        const endX = viewportCenter - lastSlideCenter;
-                        
-                        // Interpolácia medzi startX a endX podľa progress
-                        const translateX = startX + (endX - startX) * progress;
-                        
-                        gsap.set(swiper.wrapperEl, {
-                            x: translateX,
-                            force3D: true,
-                        });
-                        
-                        // Vypočítame aktívny slide index
-                        const maxProgress = totalSlides - 1;
-                        const swiperProgress = progress * maxProgress;
-                        const targetSlide = Math.min(Math.round(swiperProgress), totalSlides - 1);
-                        
-                        if (swiper.activeIndex !== targetSlide) {
-                            swiper.activeIndex = targetSlide;
-                            swiper.updateSlidesClasses();
-                            setActiveIndex(targetSlide);
-                        }
-                    }
-                },
+            // Vypočítame, o koľko musíme posunúť, aby posledná karta prešla cez viewport
+            // Posunieme tak, aby posledná karta prešla úplne cez pravý okraj
+            const maxTranslateX = -(totalWidth - viewportWidth + cardWidth);
+
+            // Nastavíme počiatočnú pozíciu
+            gsap.set(wrapperRef.current, {
+                x: 0,
+                force3D: true,
             });
 
-            const swiper = swiperRef.current;
-            const handleSlideChange = () => {
-                setActiveIndex(swiper.activeIndex);
-            };
+            // Vytvoríme nekonečnú animáciu s plynulým resetom
+            const tl = gsap.timeline({
+                repeat: -1,
+                ease: 'none',
+            });
 
-            swiper.on('slideChange', handleSlideChange);
+            // Animácia zľava doprava
+            tl.to(wrapperRef.current, {
+                x: maxTranslateX,
+                duration: speakers.length * 10, // 10 sekúnd na každú kartu (pomaly)
+                ease: 'none',
+                force3D: true,
+            });
 
-            // Sledujeme, zda je kurzor nad sekcí
+            // Reset na začiatok s okamžitým presunom (bez animácie)
+            tl.set(wrapperRef.current, {
+                x: 0,
+                immediateRender: false,
+            });
+
+            animationRef.current = tl;
+
+            // Pause on hover
             const handleMouseEnter = () => {
-                isMouseOver = true;
-                if (scrollTrigger) {
-                    scrollTrigger.refresh();
+                if (animationRef.current) {
+                    animationRef.current.pause();
                 }
             };
 
             const handleMouseLeave = () => {
-                isMouseOver = false;
-                if (scrollTrigger) {
-                    scrollTrigger.refresh();
+                if (animationRef.current) {
+                    animationRef.current.resume();
                 }
             };
 
@@ -213,12 +172,10 @@ export default function SpeakersSection() {
                 sectionRef.current.addEventListener('mouseleave', handleMouseLeave);
             }
 
-            setTimeout(() => {
-                ScrollTrigger.refresh();
-            }, 200);
-
             return () => {
-                swiper.off('slideChange', handleSlideChange);
+                if (animationRef.current) {
+                    animationRef.current.kill();
+                }
                 if (sectionRef.current) {
                     sectionRef.current.removeEventListener('mouseenter', handleMouseEnter);
                     sectionRef.current.removeEventListener('mouseleave', handleMouseLeave);
@@ -226,11 +183,29 @@ export default function SpeakersSection() {
             };
         };
 
-        timeoutId = setTimeout(initScrollTrigger, 300);
+        // Spustíme animáciu okamžite
+        // Použijeme requestAnimationFrame pre istotu, že DOM je pripravený
+        requestAnimationFrame(() => {
+            initAutoSlider();
+        });
+
+        // Refresh pri resize
+        const handleResize = () => {
+            if (animationRef.current) {
+                animationRef.current.kill();
+            }
+            requestAnimationFrame(() => {
+                initAutoSlider();
+            });
+        };
+
+        window.addEventListener('resize', handleResize);
 
         return () => {
-            if (timeoutId) clearTimeout(timeoutId);
-            if (scrollTrigger) scrollTrigger.kill();
+            window.removeEventListener('resize', handleResize);
+            if (animationRef.current) {
+                animationRef.current.kill();
+            }
             ScrollTrigger.getAll().forEach(trigger => {
                 if (trigger.vars.trigger === sectionRef.current) {
                     trigger.kill();
@@ -243,8 +218,8 @@ export default function SpeakersSection() {
         <section ref={sectionRef} className="relative w-full min-h-screen bg-white text-[#1F1919] overflow-hidden flex flex-col justify-center">
             <div className="relative z-10 w-full">
                 {/* Header */}
-                <div className="mb-8 lg:mb-12 text-center px-6 lg:px-12">
-                    <h1 className="text-7xl lg:text-8xl font-bold leading-[1.0]">
+                <div className="pt-16 lg:pt-20 xl:pt-24 2xl:pt-32 mb-6 lg:mb-8 xl:mb-12 2xl:mb-16 text-center px-4 lg:px-6 xl:px-12 2xl:px-16">
+                    <h1 className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[1.0]">
                         <AnimatedText 
                             as="span" 
                             className="block"
@@ -264,34 +239,26 @@ export default function SpeakersSection() {
                     </h1>
                 </div>
 
-                {/* Swiper Slider */}
-                <div className="relative w-full py-12 pb-20 pl-6 lg:pl-12">
-                    <Swiper
-                        onSwiper={(swiper) => {
-                            swiperRef.current = swiper;
-                        }}
-                        grabCursor={false}
-                        centeredSlides={false}
-                        slidesPerView={3}
-                        spaceBetween={80}
-                        allowTouchMove={false}
-                        className="swiper-simple"
-                        onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-                        style={{ height: 'auto' }}
-                        initialSlide={0}
+                {/* Auto Slider */}
+                <div className="relative w-full py-8 lg:py-12 xl:py-16 2xl:py-20 pb-16 lg:pb-20 xl:pb-24 2xl:pb-28 overflow-hidden">
+                    <div 
+                        ref={wrapperRef}
+                        className="flex gap-10 lg:gap-12 xl:gap-16 2xl:gap-20 pl-4 lg:pl-6 xl:pl-12 2xl:pl-16"
+                        style={{ willChange: 'transform' }}
                     >
                         {speakers.map((speaker, index) => {
                             const isEven = index % 2 === 0;
                             
                             return (
-                                <SwiperSlide
+                                <div
                                     key={index}
-                                    className="!flex"
+                                    className="flex-shrink-0"
+                                    style={{ width: '450px' }}
                                 >
-                                    <div className={`speaker-card w-full rounded-3xl overflow-hidden flex flex-col shadow-lg group ${isEven ? '' : 'translate-y-[44px]'}`}>
-                                        {/* Portrét s barevným pozadím a obrázkem v pozadí */}
+                                    <div className={`speaker-card w-full rounded-2xl lg:rounded-3xl xl:rounded-[32px] 2xl:rounded-[40px] overflow-hidden flex flex-col shadow-lg group ${isEven ? '' : 'translate-y-[32px] lg:translate-y-[44px] xl:translate-y-[52px] 2xl:translate-y-[60px]'}`}>
+                                        {/* Portrét s barevným pozadím a obrázkom v pozadí */}
                                         <div 
-                                            className="portrait-bg relative h-[480px] lg:h-[600px] transition-colors duration-300 bg-gray-200 group-hover:bg-[#D7DF21] flex items-center justify-center overflow-visible rounded-3xl p-8 pb-24"
+                                            className="portrait-bg relative h-[400px] lg:h-[480px] xl:h-[600px] 2xl:h-[700px] transition-colors duration-300 bg-gray-200 group-hover:bg-[#D7DF21] flex items-center justify-center overflow-visible rounded-2xl lg:rounded-3xl xl:rounded-[32px] 2xl:rounded-[40px] p-6 lg:p-8 xl:p-10 2xl:p-12 pb-20 lg:pb-24 xl:pb-28 2xl:pb-32"
                                             style={{
                                                 backgroundImage: `url('${speaker.image}')`,
                                                 backgroundSize: 'cover',
@@ -300,18 +267,18 @@ export default function SpeakersSection() {
                                             }}
                                         >
                                             {/* Container pro badge - flex column pro automatické uspořádání */}
-                                            <div className={`badges-container absolute left-8 right-8 flex flex-col-reverse gap-2 z-10 items-start ${isEven ? 'bottom-4' : 'bottom-2'}`}>
+                                            <div className={`badges-container absolute left-6 lg:left-8 xl:left-10 2xl:left-12 right-6 lg:right-8 xl:right-10 2xl:right-12 flex flex-col-reverse gap-2 lg:gap-2.5 xl:gap-3 2xl:gap-4 z-10 items-start ${isEven ? 'bottom-3 lg:bottom-4 xl:bottom-5 2xl:bottom-6' : 'bottom-2 lg:bottom-3 xl:bottom-4 2xl:bottom-5'}`}>
                                                 {/* Overlay label s jménem - černý obdélník s bílým textem - posune se nahoru při hover */}
-                                                <div className="name-overlay bg-[#1F1919] px-[17px] py-[8.4px] rounded-lg w-fit transition-all duration-300">
-                                                    <span className="text-white text-sm lg:text-base font-normal uppercase tracking-wider">
+                                                <div className="name-overlay bg-[#1F1919] px-4 lg:px-[17px] xl:px-5 2xl:px-6 py-2 lg:py-[8.4px] xl:py-2.5 2xl:py-3 rounded-lg xl:rounded-xl 2xl:rounded-2xl w-fit transition-all duration-300">
+                                                    <span className="text-white text-xs lg:text-sm xl:text-base 2xl:text-lg font-normal uppercase tracking-wider">
                                                         {speaker.name}
                                                     </span>
                                                 </div>
                                                 
                                                 {/* Bílá bublina s černým textem - vysune se zespodu při hover pod černý badge */}
                                                 {speaker.role && (
-                                                    <div className="role-bubble bg-white px-[17px] py-[8.4px] rounded-lg w-fit max-w-full opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-300">
-                                                        <span className="text-[#1F1919] text-sm lg:text-base font-normal text-left block">
+                                                    <div className="role-bubble bg-white px-4 lg:px-[17px] xl:px-5 2xl:px-6 py-2 lg:py-[8.4px] xl:py-2.5 2xl:py-3 rounded-lg xl:rounded-xl 2xl:rounded-2xl w-fit max-w-full opacity-0 group-hover:opacity-100 translate-y-full group-hover:translate-y-0 transition-all duration-300">
+                                                        <span className="text-[#1F1919] text-xs lg:text-sm xl:text-base 2xl:text-lg font-normal text-left block">
                                                             {speaker.role}
                                                         </span>
                                                     </div>
@@ -319,13 +286,12 @@ export default function SpeakersSection() {
                                             </div>
                                         </div>
                                     </div>
-                                </SwiperSlide>
+                                </div>
                             );
                         })}
-                    </Swiper>
+                    </div>
                 </div>
             </div>
         </section>
     );
 }
-

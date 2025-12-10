@@ -107,7 +107,7 @@ export default function Navbar() {
     return (
         <nav 
             ref={navRef}
-            className={`fixed top-0 left-0 w-full z-50 px-6 py-8 flex items-center justify-between min-h-[120px] transition-all duration-300 ease-in-out ${
+            className={`fixed top-0 left-0 w-full z-50 px-4 lg:px-6 xl:px-8 2xl:px-12 py-6 lg:py-8 xl:py-10 2xl:py-12 flex items-center justify-between min-h-[100px] lg:min-h-[120px] xl:min-h-[140px] 2xl:min-h-[160px] transition-all duration-300 ease-in-out ${
                 isVisible ? 'translate-y-0' : '-translate-y-full'
             }`}
         >
@@ -126,7 +126,7 @@ export default function Navbar() {
                         alt="Logo"
                         width={360}
                         height={360}
-                        className="h-24 w-auto object-contain"
+                        className="h-16 lg:h-20 xl:h-24 2xl:h-28 w-auto object-contain"
                         priority
                     />
                 </Link>
@@ -165,11 +165,11 @@ const NavLink = ({ href, children, active, textColor }: NavLinkProps) => {
     return (
         <Link
             href={href}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${textColor} ${
+            className={`px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 rounded-full text-sm lg:text-base xl:text-lg 2xl:text-xl font-medium transition-colors duration-300 ${textColor} ${
                 active ? 'bg-white/80 backdrop-blur-sm' : 'hover:bg-white/20'
                 }`}
         >
-            {active && <span className="inline-block w-1.5 h-1.5 bg-current rounded-full mr-2 mb-0.5"></span>}
+            {active && <span className="inline-block w-1.5 h-1.5 lg:w-2 lg:h-2 bg-current rounded-full mr-2 mb-0.5"></span>}
             {children}
         </Link>
     );

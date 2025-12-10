@@ -51,39 +51,39 @@ export default function Footer() {
     }, []);
 
     return (
-        <footer ref={footerRef} className="relative w-full bg-[#121212] text-white py-12 lg:py-16">
-            <div className="w-full px-6 lg:px-12">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 mb-12">
+        <footer ref={footerRef} className="relative w-full bg-[#121212] text-white py-10 lg:py-12 xl:py-16 2xl:py-20">
+            <div className="w-full px-4 lg:px-6 xl:px-12 2xl:px-16">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 xl:gap-16 2xl:gap-20 mb-10 lg:mb-12 xl:mb-14 2xl:mb-16">
                     {/* Left Column - Navigation */}
                     <div ref={(el) => { if (el) columnsRef.current[0] = el; }}>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6">
                             <li>
-                                <Link href="/exhibit" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs">01</span>
+                                <Link href="/exhibit" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">01</span>
                                     Exhibit
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/program" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs">02</span>
+                                <Link href="/program" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">02</span>
                                     Program
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/visit" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs">03</span>
+                                <Link href="/visit" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">03</span>
                                     Visit
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/network" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs">04</span>
+                                <Link href="/network" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">04</span>
                                     Network
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/insights" className="flex items-center gap-12 text-white/70 text-[26px] hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs">05</span>
+                                <Link href="/insights" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">05</span>
                                     Insights
                                 </Link>
                             </li>
@@ -92,24 +92,24 @@ export default function Footer() {
 
                     {/* Middle Column - News & Newsletter */}
                     <div ref={(el) => { if (el) columnsRef.current[1] = el; }}>
-                        <div className="flex items-center gap-12 mb-6">
-                            <span className="text-white/50 text-xs font-medium leading-none">06</span>
-                            <AnimatedText as="h3" className="text-white text-[26px] flex items-center leading-none">News</AnimatedText>
+                        <div className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 mb-4 lg:mb-6 xl:mb-8 2xl:mb-10">
+                            <span className="text-white/50 text-xs lg:text-sm xl:text-base font-medium leading-none">06</span>
+                            <AnimatedText as="h3" className="text-white text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl flex items-center leading-none">News</AnimatedText>
                         </div>
                         
                         {/* News Headlines */}
-                        <div className="space-y-4 mb-8 pl-[calc(12px+3rem)]">
-                            <Link href="/news/leading-charge" className="block text-white/70 text-base hover:text-white transition-colors">
+                        <div className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6 mb-6 lg:mb-8 xl:mb-10 2xl:mb-12 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
+                            <Link href="/news/leading-charge" className="block text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
                                 Leading the Charge into South Africa's Liberalised Energy Market
                                 </Link>
-                            <Link href="/news/unlocking-grid" className="block text-white/70 text-base hover:text-white transition-colors">
+                            <Link href="/news/unlocking-grid" className="block text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
                                 Unlocking Grid Access: How Congestion Curtailment Supports South Africa's Just...
                                 </Link>
                     </div>
 
                         {/* Newsletter */}
-                        <div className="mb-6 pl-[calc(12px+3rem)]">
-                            <p className="text-white/70 text-base leading-relaxed mb-4">
+                        <div className="mb-6 lg:mb-8 xl:mb-10 2xl:mb-12 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
+                            <p className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed mb-3 lg:mb-4 xl:mb-5 2xl:mb-6">
                                 Join our newsletter to stay updated on Anthem's latest news and releases. By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
                         </p>
                             <form onSubmit={handleSubmit} className="relative">
@@ -119,15 +119,15 @@ export default function Footer() {
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         placeholder="Enter your email address"
-                                        className="flex-1 px-6 py-4 bg-transparent text-white placeholder-white/50 text-base focus:outline-none"
+                                        className="flex-1 px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-4 xl:py-5 2xl:py-6 bg-transparent text-white placeholder-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl focus:outline-none"
                                         required
                                 />
                                 <button
                                     type="submit"
-                                        className="px-6 py-4 bg-transparent hover:opacity-70 transition-opacity flex items-center justify-center"
+                                        className="px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-4 xl:py-5 2xl:py-6 bg-transparent hover:opacity-70 transition-opacity flex items-center justify-center"
                                         aria-label="Subscribe"
                                 >
-                                        <svg width="24" height="24" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <svg width="20" height="20" className="lg:w-6 lg:h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7.5 15L12.5 10L7.5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                         </svg>
                                 </button>
@@ -138,26 +138,26 @@ export default function Footer() {
 
                     {/* Right Column - Contact Us */}
                     <div ref={(el) => { if (el) columnsRef.current[2] = el; }}>
-                        <div className="flex items-center gap-12 mb-6">
-                            <span className="text-white/50 text-xs font-medium leading-none">07</span>
-                            <AnimatedText as="h3" className="text-white text-[26px] flex items-center leading-none">Contact Us</AnimatedText>
+                        <div className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 mb-4 lg:mb-6 xl:mb-8 2xl:mb-10">
+                            <span className="text-white/50 text-xs lg:text-sm xl:text-base font-medium leading-none">07</span>
+                            <AnimatedText as="h3" className="text-white text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl flex items-center leading-none">Contact Us</AnimatedText>
                         </div>
                         
-                        <div className="space-y-4 pl-[calc(12px+3rem)]">
+                        <div className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
                             <div>
-                                <Link href="/helpdesk" className="text-white/70 text-base hover:text-white transition-colors block">
+                                <Link href="/helpdesk" className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors block">
                                     Helpdesk form
                                 </Link>
                             </div>
                             
                             <div>
-                                <Link href="/faq" className="text-white/70 text-base hover:text-white transition-colors block">
+                                <Link href="/faq" className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors block">
                                     FAQ
                                 </Link>
                             </div>
                             
                             <div>
-                                <p className="text-white/70 text-base leading-relaxed">
+                                <p className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed">
                                     <a href="tel:+33147565120" className="text-white hover:text-white/80 transition-colors">
                                         (+33) 1 47 56 51 20
                                     </a>
@@ -169,16 +169,16 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="pt-8 border-t border-white/10">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-                        <p className="text-white/50 text-sm">
+                <div className="pt-8 lg:pt-10 xl:pt-12 2xl:pt-16 border-t border-white/10">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 lg:gap-6 xl:gap-8">
+                        <p className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl">
                             ©2025 design and development by wepeak.eu
                         </p>
-                        <div className="flex flex-wrap gap-6">
-                            <Link href="/privacy" className="text-white/50 text-sm hover:text-white transition-colors">
+                        <div className="flex flex-wrap gap-6 lg:gap-8 xl:gap-10 2xl:gap-12">
+                            <Link href="/privacy" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
                                 Privacy Policy
                             </Link>
-                            <Link href="/disclaimer" className="text-white/50 text-sm hover:text-white transition-colors">
+                            <Link href="/disclaimer" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
                                 Disclaimer
                             </Link>
                         </div>

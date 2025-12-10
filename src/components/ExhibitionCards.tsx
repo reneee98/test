@@ -232,30 +232,30 @@ export default function ExhibitionCards() {
     return (
         <section 
             ref={sectionRef}
-            className="relative w-full h-screen bg-[#121212] px-6 lg:px-12 flex items-center justify-center"
+            className="relative w-full h-screen bg-[#121212] px-4 lg:px-8 xl:px-12 2xl:px-16 flex items-center justify-center"
         >
             <div className="w-full h-full flex items-center justify-center">
-                <div className="cards-container relative w-full h-[600px] lg:h-[700px] flex items-center justify-center overflow-visible">
+                <div className="cards-container relative w-full h-[500px] lg:h-[600px] xl:h-[700px] 2xl:h-[800px] flex items-center justify-center overflow-visible">
                     {cards.map((card, index) => (
                         <div
                             key={index}
                             ref={(el) => { 
                                 cardsRef.current[index] = el;
                             }}
-                            className="absolute w-full max-w-[1664px] h-[480px] lg:h-[580px] rounded-2xl overflow-hidden border border-white p-[5px]"
+                            className="absolute w-full max-w-[1664px] xl:max-w-[1800px] 2xl:max-w-[2000px] h-[400px] lg:h-[480px] xl:h-[580px] 2xl:h-[680px] rounded-xl lg:rounded-2xl xl:rounded-3xl 2xl:rounded-[32px] overflow-hidden border border-white p-[5px] lg:p-[6px] xl:p-[8px] 2xl:p-[10px]"
                             style={{ zIndex: cards.length - index }}
                         >
-                            <div className="relative w-full h-full bg-[#1D1D1D] rounded-2xl overflow-hidden p-4">
+                            <div className="relative w-full h-full bg-[#1D1D1D] rounded-xl lg:rounded-2xl xl:rounded-[28px] 2xl:rounded-[36px] overflow-hidden p-3 lg:p-4 xl:p-5 2xl:p-6">
                                 <div className="flex h-full">
-                                    <div className="bg-[#1D1D1D] rounded-l-2xl p-8 lg:p-12 w-1/2 flex flex-col justify-between h-full">
+                                    <div className="bg-[#1D1D1D] rounded-l-xl lg:rounded-l-2xl xl:rounded-l-[28px] 2xl:rounded-l-[36px] p-6 lg:p-8 xl:p-12 2xl:p-16 w-1/2 flex flex-col justify-between h-full">
                                         <div className="flex flex-col">
-                                            <h2 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-2">
+                                            <h2 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-none mb-2 lg:mb-3 xl:mb-4">
                                                 {card.title}
                                             </h2>
-                                            <h3 className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-2">
+                                            <h3 className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-none mb-2 lg:mb-3 xl:mb-4">
                                                 {card.subtitle}
                                             </h3>
-                                            <p className="text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-none mb-8">
+                                            <p className="text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold text-white leading-none mb-6 lg:mb-8 xl:mb-10 2xl:mb-12">
                                                 {card.year}
                                             </p>
                                         </div>
@@ -265,18 +265,18 @@ export default function ExhibitionCards() {
                                             tabIndex={0}
                                             aria-label={`View more photos from ${card.title} ${card.subtitle} ${card.year}`}
                                         >
-                                            <span className="px-6 py-3 rounded-full bg-[#D7DF21] text-[#1F1919] font-medium text-base group-hover:bg-[#D7DF21]/90 transition-colors whitespace-nowrap">
+                                            <span className="px-4 lg:px-6 xl:px-8 2xl:px-10 py-2 lg:py-3 xl:py-4 2xl:py-5 rounded-full bg-[#D7DF21] text-[#1F1919] font-medium text-sm lg:text-base xl:text-lg 2xl:text-xl group-hover:bg-[#D7DF21]/90 transition-colors whitespace-nowrap">
                                                 View more photos
                                             </span>
-                                            <span className="w-12 h-12 rounded-full bg-[#D7DF21] group-hover:bg-[#D7DF21]/90 flex items-center justify-center transition-colors flex-shrink-0">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <span className="w-10 h-10 lg:w-12 lg:h-12 xl:w-14 xl:h-14 2xl:w-16 2xl:h-16 rounded-full bg-[#D7DF21] group-hover:bg-[#D7DF21]/90 flex items-center justify-center transition-colors flex-shrink-0">
+                                                <svg width="18" height="18" className="lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M7.5 15L12.5 10L7.5 5" stroke="#1F1919" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                                 </svg>
                                             </span>
                                         </button>
                                     </div>
                                     
-                                    <div className="w-1/2 bg-[#1D1D1D] rounded-r-2xl relative overflow-hidden h-full">
+                                    <div className="w-1/2 bg-[#1D1D1D] rounded-r-xl lg:rounded-r-2xl xl:rounded-r-[28px] 2xl:rounded-r-[36px] relative overflow-hidden h-full">
                                         <Image
                                             src={card.image}
                                             alt={`${card.title} ${card.subtitle} ${card.year}`}
