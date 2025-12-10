@@ -183,10 +183,21 @@ export default function SpeakersSection() {
             };
         };
 
-        // Spustíme animáciu okamžite
-        // Použijeme requestAnimationFrame pre istotu, že DOM je pripravený
-        requestAnimationFrame(() => {
-            initAutoSlider();
+        // Spustíme animáciu až keď sekcia vstúpi do viewportu pomocou ScrollTrigger
+        let hasStarted = false;
+        
+        ScrollTrigger.create({
+            trigger: sectionRef.current,
+            start: 'top 80%',
+            once: true,
+            onEnter: () => {
+                if (!hasStarted && !animationRef.current) {
+                    hasStarted = true;
+                    requestAnimationFrame(() => {
+                        initAutoSlider();
+                    });
+                }
+            },
         });
 
         // Refresh pri resize
@@ -218,7 +229,7 @@ export default function SpeakersSection() {
         <section ref={sectionRef} className="relative w-full min-h-screen bg-white text-[#1F1919] overflow-hidden flex flex-col justify-center">
             <div className="relative z-10 w-full">
                 {/* Header */}
-                <div className="pt-16 lg:pt-20 xl:pt-24 2xl:pt-32 mb-6 lg:mb-8 xl:mb-12 2xl:mb-16 text-center px-4 lg:px-6 xl:px-12 2xl:px-16">
+                <div className="pt-16 lg:pt-20 xl:pt-24 2xl:pt-32 mb-2 lg:mb-3 xl:mb-4 2xl:mb-6 text-center px-4 lg:px-6 xl:px-12 2xl:px-16">
                     <h1 className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-bold leading-[1.0]">
                         <AnimatedText 
                             as="span" 
@@ -252,13 +263,12 @@ export default function SpeakersSection() {
                             return (
                                 <div
                                     key={index}
-                                    className="flex-shrink-0"
-                                    style={{ width: '450px' }}
+                                    className="flex-shrink-0 w-[350px] lg:w-[400px] xl:w-[450px] 2xl:w-[450px]"
                                 >
-                                    <div className={`speaker-card w-full rounded-2xl lg:rounded-3xl xl:rounded-[32px] 2xl:rounded-[40px] overflow-hidden flex flex-col shadow-lg group ${isEven ? '' : 'translate-y-[32px] lg:translate-y-[44px] xl:translate-y-[52px] 2xl:translate-y-[60px]'}`}>
+                                    <div className={`speaker-card w-full rounded-2xl lg:rounded-3xl xl:rounded-[32px] 2xl:rounded-[40px] overflow-hidden flex flex-col shadow-lg group ${isEven ? '' : 'translate-y-[32px] lg:translate-y-[44px] xl:translate-y-[60px] 2xl:translate-y-[60px]'}`}>
                                         {/* Portrét s barevným pozadím a obrázkom v pozadí */}
                                         <div 
-                                            className="portrait-bg relative h-[400px] lg:h-[480px] xl:h-[600px] 2xl:h-[700px] transition-colors duration-300 bg-gray-200 group-hover:bg-[#D7DF21] flex items-center justify-center overflow-visible rounded-2xl lg:rounded-3xl xl:rounded-[32px] 2xl:rounded-[40px] p-6 lg:p-8 xl:p-10 2xl:p-12 pb-20 lg:pb-24 xl:pb-28 2xl:pb-32"
+                                            className="portrait-bg relative h-[320px] lg:h-[380px] xl:h-[560px] 2xl:h-[560px] transition-colors duration-300 bg-gray-200 group-hover:bg-[#D7DF21] flex items-center justify-center overflow-visible rounded-2xl lg:rounded-3xl xl:rounded-[32px] 2xl:rounded-[40px] p-6 lg:p-8 xl:p-10 2xl:p-12 pb-20 lg:pb-24 xl:pb-28 2xl:pb-32"
                                             style={{
                                                 backgroundImage: `url('${speaker.image}')`,
                                                 backgroundSize: 'cover',
