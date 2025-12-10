@@ -1,14 +1,9 @@
 'use client';
 
 import Image from 'next/image';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import AnimatedText from './AnimatedText';
-
-if (typeof window !== 'undefined') {
-    gsap.registerPlugin(ScrollTrigger);
-}
 
 const speakers = [
     {
@@ -76,154 +71,85 @@ const speakers = [
 export default function SpeakersSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const animationRef = useRef<gsap.core.Timeline | null>(null);
+    const animationRef = useRef<gsap.core.Tween | null>(null);
+    const [isVisible, setIsVisible] = useState(false);
 
+    // Intersection Observer pre detekciu vstupu do viewportu
     useEffect(() => {
-        if (!sectionRef.current || !wrapperRef.current) return;
+        if (!sectionRef.current) return;
 
-        gsap.set(sectionRef.current, { backgroundColor: '#FFFFFF' });
-
-        // Animácia kariet pri vstupe do sekcie
-        const cards = sectionRef.current.querySelectorAll('.speaker-card');
-        if (cards.length > 0) {
-            gsap.set(cards, {
-                opacity: 0,
-                y: 60,
-                force3D: true,
-            });
-
-            gsap.to(cards, {
-                opacity: 1,
-                y: 0,
-                duration: 1,
-                ease: 'expo.out',
-                stagger: 0.1,
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: 'top 50%',
-                    end: 'top 30%',
-                    toggleActions: 'play none none reverse',
-                },
-                force3D: true,
-            });
-        }
-
-        // Automatický slider - posúvanie zľava doprava
-        const initAutoSlider = () => {
-            if (!wrapperRef.current) return;
-
-            const cards = wrapperRef.current.querySelectorAll('.speaker-card');
-            if (cards.length === 0) return;
-
-            // Získame šírku jednej karty a spacing
-            const firstCard = cards[0] as HTMLElement;
-            const cardWidth = firstCard.offsetWidth || 450;
-            const spaceBetween = 80; // Medzera medzi kartami
-            const totalWidth = (cardWidth + spaceBetween) * speakers.length;
-            const viewportWidth = window.innerWidth;
-            
-            // Vypočítame, o koľko musíme posunúť, aby posledná karta prešla cez viewport
-            // Posunieme tak, aby posledná karta prešla úplne cez pravý okraj
-            const maxTranslateX = -(totalWidth - viewportWidth + cardWidth);
-
-            // Nastavíme počiatočnú pozíciu
-            gsap.set(wrapperRef.current, {
-                x: 0,
-                force3D: true,
-            });
-
-            // Vytvoríme nekonečnú animáciu s plynulým resetom
-            const tl = gsap.timeline({
-                repeat: -1,
-                ease: 'none',
-            });
-
-            // Animácia zľava doprava
-            tl.to(wrapperRef.current, {
-                x: maxTranslateX,
-                duration: speakers.length * 10, // 10 sekúnd na každú kartu (pomaly)
-                ease: 'none',
-                force3D: true,
-            });
-
-            // Reset na začiatok s okamžitým presunom (bez animácie)
-            tl.set(wrapperRef.current, {
-                x: 0,
-                immediateRender: false,
-            });
-
-            animationRef.current = tl;
-
-            // Pause on hover
-            const handleMouseEnter = () => {
-                if (animationRef.current) {
-                    animationRef.current.pause();
-                }
-            };
-
-            const handleMouseLeave = () => {
-                if (animationRef.current) {
-                    animationRef.current.resume();
-                }
-            };
-
-            if (sectionRef.current) {
-                sectionRef.current.addEventListener('mouseenter', handleMouseEnter);
-                sectionRef.current.addEventListener('mouseleave', handleMouseLeave);
-            }
-
-            return () => {
-                if (animationRef.current) {
-                    animationRef.current.kill();
-                }
-                if (sectionRef.current) {
-                    sectionRef.current.removeEventListener('mouseenter', handleMouseEnter);
-                    sectionRef.current.removeEventListener('mouseleave', handleMouseLeave);
-                }
-            };
-        };
-
-        // Spustíme animáciu až keď sekcia vstúpi do viewportu pomocou ScrollTrigger
-        let hasStarted = false;
-        
-        ScrollTrigger.create({
-            trigger: sectionRef.current,
-            start: 'top 80%',
-            once: true,
-            onEnter: () => {
-                if (!hasStarted && !animationRef.current) {
-                    hasStarted = true;
-                    requestAnimationFrame(() => {
-                        initAutoSlider();
-                    });
-                }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setIsVisible(true);
+                        observer.disconnect(); // Spustíme len raz
+                    }
+                });
             },
-        });
-
-        // Refresh pri resize
-        const handleResize = () => {
-            if (animationRef.current) {
-                animationRef.current.kill();
+            {
+                threshold: 0.2, // 20% sekcie musí byť viditeľné
             }
-            requestAnimationFrame(() => {
-                initAutoSlider();
-            });
-        };
+        );
 
-        window.addEventListener('resize', handleResize);
+        observer.observe(sectionRef.current);
 
         return () => {
-            window.removeEventListener('resize', handleResize);
-            if (animationRef.current) {
-                animationRef.current.kill();
-            }
-            ScrollTrigger.getAll().forEach(trigger => {
-                if (trigger.vars.trigger === sectionRef.current) {
-                    trigger.kill();
-                }
-            });
+            observer.disconnect();
         };
     }, []);
+
+    // Spustenie animácie keď je sekcia viditeľná
+    useEffect(() => {
+        if (!isVisible || !wrapperRef.current) return;
+
+        // Počkáme na DOM
+        const timeout = setTimeout(() => {
+            if (!wrapperRef.current) return;
+
+            // Získame rozmery
+            const wrapper = wrapperRef.current;
+            const cards = wrapper.querySelectorAll('.speaker-card');
+            if (cards.length === 0) return;
+
+            const firstCard = cards[0] as HTMLElement;
+            const cardWidth = firstCard.offsetWidth || 450;
+            const computedStyle = window.getComputedStyle(wrapper);
+            const gap = parseInt(computedStyle.gap) || 80;
+            const totalWidth = (cardWidth + gap) * speakers.length;
+
+            // Infinity slider animácia
+            const tween = gsap.to(wrapper, {
+                x: -totalWidth,
+                duration: speakers.length * 6, // 6 sekúnd na kartu
+                ease: 'none',
+                repeat: -1,
+                force3D: true,
+            });
+
+            animationRef.current = tween;
+
+            // Pause on hover
+            const handleMouseEnter = () => tween.pause();
+            const handleMouseLeave = () => tween.resume();
+
+            wrapper.addEventListener('mouseenter', handleMouseEnter);
+            wrapper.addEventListener('mouseleave', handleMouseLeave);
+
+            return () => {
+                wrapper.removeEventListener('mouseenter', handleMouseEnter);
+                wrapper.removeEventListener('mouseleave', handleMouseLeave);
+            };
+        }, 200);
+
+        return () => {
+            clearTimeout(timeout);
+            if (animationRef.current) {
+                animationRef.current.kill();
+                animationRef.current = null;
+            }
+        };
+    }, [isVisible]);
 
     return (
         <section ref={sectionRef} className="relative w-full min-h-screen bg-white text-[#1F1919] overflow-hidden flex flex-col justify-center">
@@ -257,7 +183,8 @@ export default function SpeakersSection() {
                         className="flex gap-10 lg:gap-12 xl:gap-16 2xl:gap-20 pl-4 lg:pl-6 xl:pl-12 2xl:pl-16"
                         style={{ willChange: 'transform' }}
                     >
-                        {speakers.map((speaker, index) => {
+                        {/* Duplikujeme karty pre infinity efekt */}
+                        {[...speakers, ...speakers].map((speaker, index) => {
                             const isEven = index % 2 === 0;
                             
                             return (
