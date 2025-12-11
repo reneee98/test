@@ -58,7 +58,6 @@ export default function ExhibitionCards() {
                                         ? 'text-[#D7DF21] translate-x-4 lg:translate-x-6 xl:translate-x-8' 
                                         : 'text-white/20 hover:text-white/30'
                                 }`}
-                                style={{ fontFamily: 'Nohemi, sans-serif' }}
                                 stagger={0.03}
                                 start="top 85%"
                             >
@@ -70,7 +69,6 @@ export default function ExhibitionCards() {
                                         ? 'opacity-100 text-white translate-x-0' 
                                         : 'opacity-0 -translate-x-4 pointer-events-none'
                                 }`}
-                                style={{ fontFamily: 'Nohemi, sans-serif' }}
                             >
                                 <AnimatedText
                                     as="span"
