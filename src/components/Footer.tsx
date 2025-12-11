@@ -94,24 +94,11 @@ export default function Footer() {
                     <div ref={(el) => { if (el) columnsRef.current[1] = el; }}>
                         <div className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 mb-4 lg:mb-6 xl:mb-8 2xl:mb-10">
                             <span className="text-white/50 text-xs lg:text-sm xl:text-base font-medium leading-none">06</span>
-                            <AnimatedText as="h3" className="text-white text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl flex items-center leading-none">News</AnimatedText>
+                            <AnimatedText as="h3" className="text-white text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl flex items-center leading-none">Newsletter</AnimatedText>
                         </div>
                         
-                        {/* News Headlines */}
-                        <div className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6 mb-6 lg:mb-8 xl:mb-10 2xl:mb-12 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
-                            <Link href="/news/leading-charge" className="block text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
-                                Leading the Charge into South Africa's Liberalised Energy Market
-                                </Link>
-                            <Link href="/news/unlocking-grid" className="block text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
-                                Unlocking Grid Access: How Congestion Curtailment Supports South Africa's Just...
-                                </Link>
-                    </div>
-
                         {/* Newsletter */}
                         <div className="mb-6 lg:mb-8 xl:mb-10 2xl:mb-12 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
-                            <p className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed mb-3 lg:mb-4 xl:mb-5 2xl:mb-6">
-                                Join our newsletter to stay updated on Anthem's latest news and releases. By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
-                        </p>
                             <form onSubmit={handleSubmit} className="relative">
                                 <div className="flex items-center rounded-full border border-white/30 overflow-hidden">
                                 <input
