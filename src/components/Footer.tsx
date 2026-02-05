@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useRef, useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -58,34 +57,34 @@ export default function Footer() {
                     <div ref={(el) => { if (el) columnsRef.current[0] = el; }}>
                         <ul className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6">
                             <li>
-                                <Link href="/about" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                <span role="presentation" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors cursor-default">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">01</span>
                                     About
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="/exhibit" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                <span role="presentation" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors cursor-default">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">02</span>
                                     Exhibition
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="/program" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                <span role="presentation" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors cursor-default">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">03</span>
                                     Program
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="/network" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                <span role="presentation" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors cursor-default">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">04</span>
                                     Network
-                                </Link>
+                                </span>
                             </li>
                             <li>
-                                <Link href="/insights" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                <span role="presentation" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors cursor-default">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">05</span>
                                     Insights
-                                </Link>
+                                </span>
                             </li>
                         </ul>
                     </div>
@@ -132,22 +131,22 @@ export default function Footer() {
                         
                         <div className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
                             <div>
-                                <Link href="/helpdesk" className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors block">
+                                <span role="presentation" className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors block cursor-default">
                                     Helpdesk form
-                                </Link>
+                                </span>
                             </div>
                             
                             <div>
-                                <Link href="/faq" className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors block">
+                                <span role="presentation" className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors block cursor-default">
                                     FAQ
-                                </Link>
+                                </span>
                             </div>
                             
                             <div>
                                 <p className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed">
-                                    <a href="tel:+33147565120" className="text-white hover:text-white/80 transition-colors">
+                                    <span role="presentation" className="text-white hover:text-white/80 transition-colors cursor-default">
                                         (+33) 1 47 56 51 20
-                                    </a>
+                                    </span>
                                     . Our telephone service is open from Monday to Friday, 9am to 6pm CET.
                                 </p>
                             </div>
@@ -162,12 +161,12 @@ export default function Footer() {
                             ©2026 design and development by wepeak.eu
                         </p>
                         <div className="flex flex-wrap gap-6 lg:gap-8 xl:gap-10 2xl:gap-12">
-                            <Link href="/privacy" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
+                            <span role="presentation" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors cursor-default">
                                 Privacy Policy
-                            </Link>
-                            <Link href="/disclaimer" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
+                            </span>
+                            <span role="presentation" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors cursor-default">
                                 Disclaimer
-                            </Link>
+                            </span>
                         </div>
                     </div>
                 </div>

@@ -290,29 +290,27 @@ const AboutDropdown = ({ textColorClass, isCompact }: AboutDropdownProps) => {
 
     return (
         <div className="relative group">
-            <Link
-                href="/about"
-                className={triggerClasses}
-                aria-haspopup="true"
+            <span
+                role="presentation"
+                className={`${triggerClasses} cursor-default inline-block`}
                 aria-label="About – submenu on hover"
             >
                 About
-            </Link>
+            </span>
             <div
-                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-200 ease-out min-w-[200px]"
+                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-200 ease-out min-w-[200px]"
                 role="menu"
                 aria-label="About subpages"
             >
                 <div className={`${panelClasses} py-2 px-1.5 backdrop-blur-sm`}>
                     {ABOUT_SUBPAGES.map((item) => (
-                        <Link
+                        <span
                             key={item.href}
-                            href={item.href}
-                            role="menuitem"
-                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150`}
+                            role="presentation"
+                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150 cursor-default`}
                         >
                             {item.label}
-                        </Link>
+                        </span>
                     ))}
                 </div>
             </div>
@@ -341,29 +339,27 @@ const ExhibitionDropdown = ({ textColorClass, isCompact }: ExhibitionDropdownPro
 
     return (
         <div className="relative group">
-            <Link
-                href="/exhibit"
-                className={triggerClasses}
-                aria-haspopup="true"
+            <span
+                role="presentation"
+                className={`${triggerClasses} cursor-default inline-block`}
                 aria-label="Exhibition – submenu on hover"
             >
                 Exhibition
-            </Link>
+            </span>
             <div
-                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-200 ease-out min-w-[200px]"
+                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-200 ease-out min-w-[200px]"
                 role="menu"
                 aria-label="Exhibition subpages"
             >
                 <div className={`${panelClasses} py-2 px-1.5 backdrop-blur-sm`}>
                     {EXHIBITION_SUBPAGES.map((item) => (
-                        <Link
+                        <span
                             key={item.href}
-                            href={item.href}
-                            role="menuitem"
-                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150`}
+                            role="presentation"
+                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150 cursor-default`}
                         >
                             {item.label}
-                        </Link>
+                        </span>
                     ))}
                 </div>
             </div>
@@ -392,29 +388,27 @@ const ProgramDropdown = ({ textColorClass, isCompact }: ProgramDropdownProps) =>
 
     return (
         <div className="relative group">
-            <Link
-                href="/program"
-                className={triggerClasses}
-                aria-haspopup="true"
+            <span
+                role="presentation"
+                className={`${triggerClasses} cursor-default inline-block`}
                 aria-label="Program – submenu on hover"
             >
                 Program
-            </Link>
+            </span>
             <div
-                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-200 ease-out min-w-[200px]"
+                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 transition-all duration-200 ease-out min-w-[200px]"
                 role="menu"
                 aria-label="Program subpages"
             >
                 <div className={`${panelClasses} py-2 px-1.5 backdrop-blur-sm`}>
                     {PROGRAM_SUBPAGES.map((item) => (
-                        <Link
+                        <span
                             key={item.href}
-                            href={item.href}
-                            role="menuitem"
-                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150`}
+                            role="presentation"
+                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150 cursor-default`}
                         >
                             {item.label}
-                        </Link>
+                        </span>
                     ))}
                 </div>
             </div>
@@ -441,9 +435,9 @@ const NavLink = ({ href, children, active, textColor, isCompact }: NavLinkProps)
         : 'hover:bg-[#1F1919]/10';
 
     return (
-        <Link
-            href={href}
-            className={`rounded-full font-medium transition-all duration-300 ${textColor} ${
+        <span
+            role="presentation"
+            className={`rounded-full font-medium transition-all duration-300 cursor-default inline-block ${textColor} ${
                 isCompact 
                     ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}` 
                     : 'px-3 lg:px-4 xl:px-5 2xl:px-6 py-1.5 lg:py-2 xl:py-2.5 2xl:py-3 text-sm lg:text-sm xl:text-base 2xl:text-lg hover:bg-white/20'
@@ -453,6 +447,6 @@ const NavLink = ({ href, children, active, textColor, isCompact }: NavLinkProps)
         >
             {active && <span className="inline-block w-1.5 h-1.5 lg:w-2 lg:h-2 bg-current rounded-full mr-2 mb-0.5"></span>}
             {children}
-        </Link>
+        </span>
     );
 };
