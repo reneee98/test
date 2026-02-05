@@ -414,9 +414,9 @@ export default function LogosSection() {
 
                 {/* CTA button */}
                 <div className="flex justify-center px-4 pb-12 lg:pb-16 xl:pb-20 2xl:pb-24">
-                    <a
-                        href="#"
-                        className="flex items-center gap-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F1919] focus-visible:ring-offset-2 rounded-full"
+                    <span
+                        role="presentation"
+                        className="flex items-center gap-0 group rounded-full cursor-default"
                         aria-label="Explore our network"
                     >
                         <span className="px-4 py-2 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 2xl:px-7 2xl:py-3.5 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-sm lg:text-base xl:text-lg 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
@@ -427,7 +427,7 @@ export default function LogosSection() {
                                 <path d="M4 10L10 4M10 4H4M10 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </span>
-                    </a>
+                    </span>
                 </div>
             </div>
         </section>

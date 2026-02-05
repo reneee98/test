@@ -12,7 +12,7 @@ export default function Hero() {
     const videoRef = useRef<HTMLDivElement>(null);
     const logoMaskRef = useRef<HTMLDivElement>(null);
     const imagesRef = useRef<HTMLDivElement[]>([]);
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const buttonRef = useRef<HTMLSpanElement>(null);
 
     useGSAP(() => {
         // Initial animations can go here
@@ -108,7 +108,7 @@ export default function Hero() {
                     </p>
 
                     <div className="flex justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 xl:mb-6 2xl:mb-8 hero-text">
-                        <button ref={buttonRef} className="flex items-center gap-0 group">
+                        <span ref={buttonRef} role="presentation" className="flex items-center gap-0 group cursor-default">
                             <span className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 2xl:px-8 2xl:py-4 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-[10px] sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
                                 Get ready to 2027
                             </span>
@@ -117,7 +117,7 @@ export default function Hero() {
                                     <path d="M4 10L10 4M10 4H4M10 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
-                        </button>
+                        </span>
                     </div>
 
                     <div className="flex items-center justify-center gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 hero-text flex-wrap sm:flex-nowrap">
@@ -224,15 +224,15 @@ export default function Hero() {
                 {/* Bottom Right Socials */}
                 <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 md:bottom-4 md:right-4 lg:bottom-4 lg:right-4 xl:bottom-6 xl:right-6 2xl:bottom-10 2xl:right-10 flex flex-col lg:flex-row items-end lg:items-center gap-1 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-3 2xl:gap-4 text-[#F0F0F0] z-20">
                     <div className="flex gap-1 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2.5 2xl:gap-3">
-                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                        <span role="presentation" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors cursor-default">
                             <Image src="/images/X.svg" alt="X (Twitter)" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6 brightness-0 invert" />
-                        </a>
-                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                        </span>
+                        <span role="presentation" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors cursor-default">
                             <Image src="/images/011-linkedin.svg" alt="LinkedIn" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6 brightness-0 invert" />
-                        </a>
-                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                        </span>
+                        <span role="presentation" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors cursor-default">
                             <Image src="/images/021-youtube.svg" alt="YouTube" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6 brightness-0 invert" />
-                        </a>
+                        </span>
                     </div>
                     <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-xs xl:text-sm 2xl:text-lg font-medium hidden lg:inline">Find us on social networks</span>
                 </div>

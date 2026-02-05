@@ -171,9 +171,9 @@ export default function FeaturedSponsorsSection() {
 
                 {/* View All Button */}
                 <div className="flex justify-center pt-8 lg:pt-10 xl:pt-12 2xl:pt-14 px-4 lg:px-6 xl:px-12 2xl:px-16">
-                    <a 
-                        href="/exhibit/sponsors" 
-                        className="flex items-center gap-0 group"
+                    <span
+                        role="presentation"
+                        className="flex items-center gap-0 group cursor-default"
                     >
                         <span className="px-4 py-2 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 2xl:px-7 2xl:py-3.5 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-sm lg:text-base xl:text-lg 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
                             View all sponsors
@@ -183,7 +183,7 @@ export default function FeaturedSponsorsSection() {
                                 <path d="M4 10L10 4M10 4H4M10 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </span>
-                    </a>
+                    </span>
                 </div>
             </div>
         </section>

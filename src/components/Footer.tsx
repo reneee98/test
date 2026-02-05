@@ -99,7 +99,7 @@ export default function Footer() {
                         
                         {/* Newsletter */}
                         <div className="mb-6 lg:mb-8 xl:mb-10 2xl:mb-12 pl-[calc(12px+2rem)] lg:pl-[calc(12px+3rem)] xl:pl-[calc(12px+3.5rem)] 2xl:pl-[calc(12px+4rem)]">
-                            <form onSubmit={handleSubmit} className="relative">
+                            <form onSubmit={(e) => e.preventDefault()} className="relative">
                                 <div className="flex items-center rounded-full border border-white/30 overflow-hidden">
                                 <input
                                     type="email"
@@ -109,15 +109,15 @@ export default function Footer() {
                                         className="flex-1 px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-4 xl:py-5 2xl:py-6 bg-transparent text-white placeholder-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl focus:outline-none"
                                         required
                                 />
-                                <button
-                                    type="submit"
-                                        className="px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-4 xl:py-5 2xl:py-6 bg-transparent hover:opacity-70 transition-opacity flex items-center justify-center"
-                                        aria-label="Subscribe"
+                                <span
+                                    role="presentation"
+                                    className="px-4 lg:px-6 xl:px-8 2xl:px-10 py-3 lg:py-4 xl:py-5 2xl:py-6 bg-transparent hover:opacity-70 transition-opacity flex items-center justify-center cursor-default"
+                                    aria-label="Subscribe"
                                 >
                                         <svg width="20" height="20" className="lg:w-6 lg:h-6 xl:w-7 xl:h-7 2xl:w-8 2xl:h-8" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7.5 15L12.5 10L7.5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                         </svg>
-                                </button>
+                                </span>
                             </div>
                         </form>
                         </div>

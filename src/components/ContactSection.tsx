@@ -12,7 +12,7 @@ if (typeof window !== 'undefined') {
 export default function ContactSection() {
     const sectionRef = useRef<HTMLElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    const buttonRef = useRef<HTMLSpanElement>(null);
 
     useEffect(() => {
         if (!sectionRef.current || !containerRef.current) return;
@@ -87,7 +87,7 @@ export default function ContactSection() {
 
                         {/* Button */}
                         <div className="mt-4">
-                            <button ref={buttonRef} className="flex items-center gap-0 group">
+                            <span ref={buttonRef} role="presentation" className="inline-flex items-center gap-0 group cursor-default">
                                 <span className="px-6 py-3 rounded-full bg-[#1F1919] text-white font-medium text-base group-hover:bg-[#368391] transition-colors">
                                     Get In Touch
                                 </span>
@@ -96,7 +96,7 @@ export default function ContactSection() {
                                         <path d="M7.5 15L12.5 10L7.5 5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                                     </svg>
                                 </span>
-                            </button>
+                            </span>
                         </div>
                     </div>
                     </div>
