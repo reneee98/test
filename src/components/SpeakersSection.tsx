@@ -8,62 +8,62 @@ import AnimatedText from './AnimatedText';
 const speakers = [
     {
         name: 'MONIQUE BARBUT',
-        role: '',
+        role: 'Executive Director, World Nuclear Association',
         image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'ROLAND LESCURE',
-        role: 'Minister for Ecological Transition, Biodiversity and International Negotiations on Climate and Nature for France',
+        role: 'Vice-President Energy Transition, EDF',
         image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'SYLVIE BERMANN',
-        role: '',
+        role: 'Technical Director, French Nuclear Safety Authority (ASN)',
         image: '/images/portretovky/portrait3.png'
     },
     {
         name: 'CÉDRIC KLAPISCH',
-        role: 'DIRECTOR • SCREENWRITER • PRODUCER',
+        role: 'Executive Director, Framatome',
         image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'ELISHA KARMITZ',
-        role: 'PRODUCER - CHIEF EXECUTIVE OFFICER OF MK2',
+        role: 'Head of Business Development, Orano',
         image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'ANA GIRARDOT',
-        role: 'ACTRESS',
+        role: 'Head of R&D, IAEA Division of Nuclear Power',
         image: '/images/portretovky/portrait3.png'
     },
     {
         name: 'BRUNO PATINO',
-        role: 'CEO OF ARTE FRANCE - JOURNALIST AND MEDIA EXECUTIVE',
+        role: 'Vice-President New Build, Westinghouse',
         image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'JUNIE LAU',
-        role: 'ARTIST',
+        role: 'Technical Director, CEA',
         image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'RAPHAËL FRYDMAN',
-        role: 'FILMMAKER',
+        role: 'Executive Director, Nuclear Energy Agency (NEA)',
         image: '/images/portretovky/portrait3.png'
     },
     {
         name: 'JEAN-PIERRE DARROUSSIN',
-        role: 'ACTOR • DIRECTOR',
+        role: 'Head of R&D, Assystem',
         image: '/images/portretovky/portrait-png.png'
     },
     {
         name: 'MARION COTILLARD',
-        role: 'ACTRESS • PRODUCER',
+        role: 'Head of Business Development, SMR Programme',
         image: '/images/portretovky/portrait2.png'
     },
     {
         name: 'LÉA SEYDOUX',
-        role: 'ACTRESS',
+        role: 'Vice-President Innovation & New Nuclear, Urenco',
         image: '/images/portretovky/portrait3.png'
     },
 ];
@@ -163,15 +163,7 @@ export default function SpeakersSection() {
                             stagger={0.025}
                             start="top 85%"
                         >
-                            Among key speakers
-                        </AnimatedText>
-                        <AnimatedText 
-                            as="span" 
-                            className="block"
-                            stagger={0.025}
-                            start="top 85%"
-                        >
-                            of the edition
+                            Key speakers of the 2027 edition
                         </AnimatedText>
                     </h1>
                 </div>
@@ -227,6 +219,23 @@ export default function SpeakersSection() {
                             );
                         })}
                     </div>
+                </div>
+
+                {/* View All Button */}
+                <div className="flex justify-center pb-16 lg:pb-20 xl:pb-24 2xl:pb-28 px-4 lg:px-6 xl:px-12 2xl:px-16">
+                    <a 
+                        href="/program/speakers" 
+                        className="flex items-center gap-0 group"
+                    >
+                        <span className="px-4 py-2 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 2xl:px-7 2xl:py-3.5 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-sm lg:text-base xl:text-lg 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
+                            View all speakers
+                        </span>
+                        <span className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 rounded-full bg-[#1F1919] group-hover:bg-[#368391] flex items-center justify-center transition-colors flex-shrink-0">
+                            <svg width="12" height="12" className="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px] 2xl:w-[18px] 2xl:h-[18px] text-[#F0F0F0]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 10L10 4M10 4H4M10 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </span>
+                    </a>
                 </div>
             </div>
         </section>

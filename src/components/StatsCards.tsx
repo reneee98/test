@@ -149,7 +149,7 @@ export default function StatsCards() {
                                             className="text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-thin block leading-none tracking-tight text-white"
                                             style={{ fontFamily: "'Nohemi', sans-serif" }}
                                         >
-                                            {metric.suffix}{metric.value.toLocaleString('en-US')}
+                                            {metric.value.toLocaleString('en-US')}{metric.suffix}
                                         </span>
                                     </div>
                                     

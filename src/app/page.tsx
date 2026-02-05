@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import CleanWorld from '@/components/CleanWorld';
 import StatsCards from '@/components/StatsCards';
 import SpeakersSection from '@/components/SpeakersSection';
+import FeaturedSponsorsSection from '@/components/FeaturedSponsorsSection';
 import LogosSection from '@/components/LogosSection';
 import ExhibitionCards from '@/components/ExhibitionCards';
 import Footer from '@/components/Footer';
@@ -26,6 +27,7 @@ export default function Home() {
         <CleanWorld />
         <StatsCards />
         <SpeakersSection />
+        <FeaturedSponsorsSection />
         <LogosSection />
         <ExhibitionCards />
         <Footer />

@@ -205,9 +205,9 @@ export default function Navbar() {
         >
             {/* Left Links */}
             <div className="hidden md:flex items-center gap-0.5 lg:gap-1">
-                <NavLink href="/about" textColor={textColorClass} isCompact={isCompact}>About</NavLink>
-                <NavLink href="/exhibit" textColor={textColorClass} isCompact={isCompact}>Exhibit</NavLink>
-                <NavLink href="/program" textColor={textColorClass} isCompact={isCompact}>Program</NavLink>
+                <AboutDropdown textColorClass={textColorClass} isCompact={isCompact} />
+                <ExhibitionDropdown textColorClass={textColorClass} isCompact={isCompact} />
+                <ProgramDropdown textColorClass={textColorClass} isCompact={isCompact} />
             </div>
 
             {/* Logo */}
@@ -250,6 +250,180 @@ export default function Navbar() {
     );
 }
 
+const ABOUT_SUBPAGES: { label: string; href: string }[] = [
+    { label: 'WNE', href: '/about' },
+    { label: 'Team', href: '/about/team' },
+    { label: 'Editions', href: '/about/editions' },
+    { label: 'Sustainability', href: '/about/sustainability' },
+];
+
+const EXHIBITION_SUBPAGES: { label: string; href: string }[] = [
+    { label: 'Themes', href: '/exhibit/themes' },
+    { label: 'Sponsors', href: '/exhibit/sponsors' },
+    { label: 'Exhibitors', href: '/exhibit/exhibitors' },
+    { label: 'Pavilions', href: '/exhibit/pavilions' },
+];
+
+const PROGRAM_SUBPAGES: { label: string; href: string }[] = [
+    { label: 'Official Program', href: '/program' },
+    { label: 'Speakers', href: '/program/speakers' },
+    { label: 'Awards', href: '/program/awards' },
+    { label: 'Startups', href: '/program/startups' },
+];
+
+type AboutDropdownProps = {
+    textColorClass: string;
+    isCompact: boolean;
+};
+
+const AboutDropdown = ({ textColorClass, isCompact }: AboutDropdownProps) => {
+    const isDark = textColorClass === 'text-white';
+    const hoverTextColor = isDark ? 'hover:text-white/90' : 'hover:text-[#1F1919]/80';
+    const hoverBgColor = isDark ? 'hover:bg-white/10' : 'hover:bg-[#1F1919]/10';
+    const triggerClasses = `rounded-full font-medium transition-all duration-300 ${textColorClass} ${
+        isCompact
+            ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}`
+            : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+    }`;
+    const panelClasses = isDark
+        ? 'bg-[#1F1919] rounded-2xl shadow-[4px_4px_0_0_rgba(215,223,33,0.15)] border border-white/5'
+        : 'bg-white rounded-2xl shadow-[4px_4px_0_0_rgba(31,25,25,0.06)] border border-[#1F1919]/5';
+    const itemHoverBg = isDark ? 'hover:bg-white/10' : 'hover:bg-gray-100';
+
+    return (
+        <div className="relative group">
+            <Link
+                href="/about"
+                className={triggerClasses}
+                aria-haspopup="true"
+                aria-label="About – submenu on hover"
+            >
+                About
+            </Link>
+            <div
+                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-200 ease-out min-w-[200px]"
+                role="menu"
+                aria-label="About subpages"
+            >
+                <div className={`${panelClasses} py-2 px-1.5 backdrop-blur-sm`}>
+                    {ABOUT_SUBPAGES.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            role="menuitem"
+                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150`}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+type ExhibitionDropdownProps = {
+    textColorClass: string;
+    isCompact: boolean;
+};
+
+const ExhibitionDropdown = ({ textColorClass, isCompact }: ExhibitionDropdownProps) => {
+    const isDark = textColorClass === 'text-white';
+    const hoverTextColor = isDark ? 'hover:text-white/90' : 'hover:text-[#1F1919]/80';
+    const hoverBgColor = isDark ? 'hover:bg-white/10' : 'hover:bg-[#1F1919]/10';
+    const triggerClasses = `rounded-full font-medium transition-all duration-300 ${textColorClass} ${
+        isCompact
+            ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}`
+            : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+    }`;
+    const panelClasses = isDark
+        ? 'bg-[#1F1919] rounded-2xl shadow-[4px_4px_0_0_rgba(215,223,33,0.15)] border border-white/5'
+        : 'bg-white rounded-2xl shadow-[4px_4px_0_0_rgba(31,25,25,0.06)] border border-[#1F1919]/5';
+    const itemHoverBg = isDark ? 'hover:bg-white/10' : 'hover:bg-gray-100';
+
+    return (
+        <div className="relative group">
+            <Link
+                href="/exhibit"
+                className={triggerClasses}
+                aria-haspopup="true"
+                aria-label="Exhibition – submenu on hover"
+            >
+                Exhibition
+            </Link>
+            <div
+                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-200 ease-out min-w-[200px]"
+                role="menu"
+                aria-label="Exhibition subpages"
+            >
+                <div className={`${panelClasses} py-2 px-1.5 backdrop-blur-sm`}>
+                    {EXHIBITION_SUBPAGES.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            role="menuitem"
+                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150`}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
+type ProgramDropdownProps = {
+    textColorClass: string;
+    isCompact: boolean;
+};
+
+const ProgramDropdown = ({ textColorClass, isCompact }: ProgramDropdownProps) => {
+    const isDark = textColorClass === 'text-white';
+    const hoverTextColor = isDark ? 'hover:text-white/90' : 'hover:text-[#1F1919]/80';
+    const hoverBgColor = isDark ? 'hover:bg-white/10' : 'hover:bg-[#1F1919]/10';
+    const triggerClasses = `rounded-full font-medium transition-all duration-300 ${textColorClass} ${
+        isCompact
+            ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}`
+            : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+    }`;
+    const panelClasses = isDark
+        ? 'bg-[#1F1919] rounded-2xl shadow-[4px_4px_0_0_rgba(215,223,33,0.15)] border border-white/5'
+        : 'bg-white rounded-2xl shadow-[4px_4px_0_0_rgba(31,25,25,0.06)] border border-[#1F1919]/5';
+    const itemHoverBg = isDark ? 'hover:bg-white/10' : 'hover:bg-gray-100';
+
+    return (
+        <div className="relative group">
+            <Link
+                href="/program"
+                className={triggerClasses}
+                aria-haspopup="true"
+                aria-label="Program – submenu on hover"
+            >
+                Program
+            </Link>
+            <div
+                className="absolute left-0 top-full pt-2 opacity-0 invisible scale-95 origin-top-left group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:scale-100 transition-all duration-200 ease-out min-w-[200px]"
+                role="menu"
+                aria-label="Program subpages"
+            >
+                <div className={`${panelClasses} py-2 px-1.5 backdrop-blur-sm`}>
+                    {PROGRAM_SUBPAGES.map((item) => (
+                        <Link
+                            key={item.href}
+                            href={item.href}
+                            role="menuitem"
+                            className={`block px-5 py-3 mx-1 rounded-lg text-sm lg:text-base font-medium ${textColorClass} ${itemHoverBg} transition-colors duration-150`}
+                        >
+                            {item.label}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 type NavLinkProps = {
     href: string;
     children: React.ReactNode;
@@ -259,12 +433,21 @@ type NavLinkProps = {
 };
 
 const NavLink = ({ href, children, active, textColor, isCompact }: NavLinkProps) => {
+    // Určíme hover farbu podľa textColor
+    const hoverTextColor = textColor === 'text-white' 
+        ? 'hover:text-white/90' 
+        : 'hover:text-[#1F1919]/80';
+    
+    const hoverBgColor = textColor === 'text-white'
+        ? 'hover:bg-white/10'
+        : 'hover:bg-[#1F1919]/10';
+
     return (
         <Link
             href={href}
             className={`rounded-full font-medium transition-all duration-300 ${textColor} ${
                 isCompact 
-                    ? 'px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm hover:bg-white/10 hover:text-white/90' 
+                    ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}` 
                     : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
             } ${
                 active ? 'bg-white/80 backdrop-blur-sm' : ''

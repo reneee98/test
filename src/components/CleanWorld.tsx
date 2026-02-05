@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const welcomeText = "Welcome to Event, the original social entertainment venue! Get ready to get playful, and create memories around the table.";
+const welcomeText = "Discover innovative solutions that highlight the industry's ability to address global challenges while engaging with leaders who are driving decarbonization, innovation, and economic growth, boldly shaping the sustainable future of nuclear energy.";
 
 export default function CleanWorld() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -170,7 +170,7 @@ export default function CleanWorld() {
                             {/* Text - vnútri video container */}
                             <div ref={textRef} className="absolute inset-0 z-50 flex items-center justify-center pointer-events-none" style={{ opacity: 0 }}>
                                 <div className="max-w-xs lg:max-w-sm xl:max-w-xs 2xl:max-w-sm mx-auto text-center px-4 lg:px-6 xl:px-6 2xl:px-8">
-                                    <h1 className="text-sm lg:text-base xl:text-lg 2xl:text-xl font-bold text-white leading-[1.0]">
+                                    <h1 className="text-xs lg:text-sm xl:text-base 2xl:text-lg font-bold text-white leading-[1.0]">
                                         {words.map((word, wordIndex) => (
                                             <span key={wordIndex} className="word inline-block whitespace-nowrap">
                                                 {word.split('').map((char, i) => {

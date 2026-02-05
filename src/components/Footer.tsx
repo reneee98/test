@@ -58,33 +58,21 @@ export default function Footer() {
                     <div ref={(el) => { if (el) columnsRef.current[0] = el; }}>
                         <ul className="space-y-3 lg:space-y-4 xl:space-y-5 2xl:space-y-6">
                             <li>
-                                <Link href="/exhibit" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                <Link href="/about" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">01</span>
-                                    Exhibit
+                                    About
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/exhibit" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">02</span>
+                                    Exhibition
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/program" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">02</span>
-                                    Program
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/visit" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
                                     <span className="text-white/50 text-xs lg:text-sm xl:text-base">03</span>
-                                    Visit
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/network" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">04</span>
-                                    Network
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/insights" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
-                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">05</span>
-                                    Insights
+                                    Program
                                 </Link>
                             </li>
                         </ul>
@@ -159,7 +147,7 @@ export default function Footer() {
                 <div className="pt-8 lg:pt-10 xl:pt-12 2xl:pt-16 border-t border-white/10">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4 lg:gap-6 xl:gap-8">
                         <p className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl">
-                            ©2025 design and development by wepeak.eu
+                            ©2026 design and development by wepeak.eu
                         </p>
                         <div className="flex flex-wrap gap-6 lg:gap-8 xl:gap-10 2xl:gap-12">
                             <Link href="/privacy" className="text-white/50 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:text-white transition-colors">
