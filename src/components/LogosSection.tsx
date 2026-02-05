@@ -411,6 +411,24 @@ export default function LogosSection() {
                         );
                     })}
                 </div>
+
+                {/* CTA button */}
+                <div className="flex justify-center px-4 pb-12 lg:pb-16 xl:pb-20 2xl:pb-24">
+                    <a
+                        href="#"
+                        className="flex items-center gap-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1F1919] focus-visible:ring-offset-2 rounded-full"
+                        aria-label="Explore our network"
+                    >
+                        <span className="px-4 py-2 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 2xl:px-7 2xl:py-3.5 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-sm lg:text-base xl:text-lg 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
+                            Explore our network
+                        </span>
+                        <span className="w-8 h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 rounded-full bg-[#1F1919] group-hover:bg-[#368391] flex items-center justify-center transition-colors flex-shrink-0">
+                            <svg width="12" height="12" className="lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px] 2xl:w-[18px] 2xl:h-[18px] text-[#F0F0F0]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 10L10 4M10 4H4M10 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
             </div>
         </section>
     );
