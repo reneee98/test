@@ -75,6 +75,18 @@ export default function Footer() {
                                     Program
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/network" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">04</span>
+                                    Network
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/insights" className="flex items-center gap-8 lg:gap-12 xl:gap-14 2xl:gap-16 text-white/70 text-xl lg:text-2xl xl:text-[26px] 2xl:text-3xl hover:text-white transition-colors">
+                                    <span className="text-white/50 text-xs lg:text-sm xl:text-base">05</span>
+                                    Insights
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 

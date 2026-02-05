@@ -85,17 +85,17 @@ export default function Hero() {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="relative w-full h-screen px-2 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-12 pt-16 sm:pt-20 md:pt-24 lg:pt-32 xl:pt-40 2xl:pt-48 pb-2 sm:pb-3 md:pb-4 lg:pb-6 xl:pb-8 2xl:pb-12 flex flex-row gap-1.5 sm:gap-2 md:gap-3 lg:gap-6 xl:gap-8 2xl:gap-12 bg-white overflow-hidden">
+        <div ref={containerRef} className="relative w-full min-h-screen px-2 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-12 pt-16 sm:pt-20 md:pt-24 lg:pt-24 xl:pt-32 2xl:pt-40 pb-2 sm:pb-3 md:pb-4 lg:pb-6 xl:pb-8 2xl:pb-12 flex flex-row gap-1.5 sm:gap-2 md:gap-3 lg:gap-4 xl:gap-6 2xl:gap-8 bg-white overflow-hidden">
 
             {/* Left Section - Yellow */}
-            <div className="w-1/2 bg-[#D7DF21] rounded-xl sm:rounded-2xl md:rounded-[32px] lg:rounded-[40px] xl:rounded-[48px] 2xl:rounded-[56px] p-2 sm:p-3 md:p-4 lg:p-10 xl:p-16 2xl:p-20 flex flex-col justify-center relative overflow-hidden">
+            <div className="w-1/2 bg-[#D7DF21] rounded-xl sm:rounded-2xl md:rounded-[32px] lg:rounded-[40px] xl:rounded-[48px] 2xl:rounded-[56px] p-2 sm:p-3 md:p-4 lg:p-6 xl:p-10 2xl:p-16 flex flex-col justify-center relative overflow-hidden">
                 {/* Decorative Curve (Bottom Right) */}
                 <div className="absolute bottom-0 right-0 w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 xl:w-24 xl:h-24 2xl:w-28 2xl:h-28 bg-transparent rounded-br-2xl sm:rounded-br-3xl md:rounded-br-[32px] lg:rounded-br-[40px] xl:rounded-br-[48px] 2xl:rounded-br-[56px] shadow-[6px_6px_0_6px_#F0F0F0] sm:shadow-[7px_7px_0_7px_#F0F0F0] md:shadow-[8px_8px_0_8px_#F0F0F0] lg:shadow-[10px_10px_0_10px_#F0F0F0] xl:shadow-[12px_12px_0_12px_#F0F0F0] 2xl:shadow-[14px_14px_0_14px_#F0F0F0] z-0"></div>
 
-                <div className="max-w-none mx-auto relative z-20 text-center px-0.5 sm:px-1 md:px-2 lg:px-4 xl:px-6 2xl:px-8">
+                <div className="max-w-none mx-auto relative z-20 text-center px-0.5 sm:px-1 md:px-2 lg:px-3 xl:px-4 2xl:px-6">
                     <AnimatedText 
                         as="h1" 
-                        className="text-lg sm:text-xl md:text-2xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-bold leading-[1.1] sm:leading-[1.05] md:leading-none mb-1 sm:mb-2 md:mb-3 lg:mb-6 xl:mb-8 2xl:mb-10 text-[#1F1919]"
+                        className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-5xl 2xl:text-6xl font-bold leading-[1.1] sm:leading-[1.05] md:leading-none mb-1 sm:mb-2 md:mb-3 lg:mb-4 xl:mb-6 2xl:mb-8 text-[#1F1919]"
                         stagger={0.015}
                         duration={0.6}
                         start="top 95%"
@@ -103,17 +103,17 @@ export default function Hero() {
                         The world's leading civil nuclear exhibition
                     </AnimatedText>
 
-                    <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-base xl:text-lg 2xl:text-xl mb-2 sm:mb-2.5 md:mb-3 lg:mb-8 xl:mb-10 2xl:mb-12 hero-text text-[#1F1919] leading-tight sm:leading-relaxed px-0.5 sm:px-1 md:px-2 lg:px-0 max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto">
+                    <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base 2xl:text-lg mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 xl:mb-6 2xl:mb-8 hero-text text-[#1F1919] leading-tight sm:leading-relaxed px-0.5 sm:px-1 md:px-2 lg:px-0 max-w-xl lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl mx-auto">
                         WNE connects you with the most comprehensive network of worldwide top-tier suppliers and service providers across the entire nuclear sector, from energy to other application markets like medicine, agriculture & space.
                     </p>
 
-                    <div className="flex justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-8 xl:mb-10 2xl:mb-12 hero-text">
+                    <div className="flex justify-center mb-2 sm:mb-2.5 md:mb-3 lg:mb-4 xl:mb-6 2xl:mb-8 hero-text">
                         <button ref={buttonRef} className="flex items-center gap-0 group">
-                            <span className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 lg:px-6 lg:py-3 xl:px-7 xl:py-3.5 2xl:px-8 2xl:py-4 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
+                            <span className="px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5 xl:px-6 xl:py-3 2xl:px-8 2xl:py-4 rounded-full bg-[#1F1919] text-[#F0F0F0] font-medium text-[10px] sm:text-xs md:text-sm lg:text-sm xl:text-base 2xl:text-xl group-hover:bg-[#368391] transition-colors whitespace-nowrap">
                                 Get ready to 2027
                             </span>
-                            <span className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 rounded-full bg-[#1F1919] group-hover:bg-[#368391] flex items-center justify-center transition-colors flex-shrink-0">
-                                <svg width="10" height="10" className="sm:w-[12px] sm:h-[12px] md:w-[14px] md:h-[14px] lg:w-[16px] lg:h-[16px] xl:w-[18px] xl:h-[18px] 2xl:w-[20px] 2xl:h-[20px] text-[#F0F0F0]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <span className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 lg:w-8 lg:h-8 xl:w-10 xl:h-10 2xl:w-14 2xl:h-14 rounded-full bg-[#1F1919] group-hover:bg-[#368391] flex items-center justify-center transition-colors flex-shrink-0">
+                                <svg width="10" height="10" className="sm:w-[12px] sm:h-[12px] md:w-[14px] md:h-[14px] lg:w-[14px] lg:h-[14px] xl:w-[16px] xl:h-[16px] 2xl:w-[20px] 2xl:h-[20px] text-[#F0F0F0]" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M4 10L10 4M10 4H4M10 4V10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </span>
@@ -146,7 +146,7 @@ export default function Hero() {
             </div>
 
             {/* Right Section - Video */}
-            <div ref={videoRef} className="w-1/2 relative rounded-xl sm:rounded-2xl md:rounded-[32px] lg:rounded-[40px] xl:rounded-[48px] 2xl:rounded-[56px] overflow-hidden">
+            <div ref={videoRef} className="w-1/2 relative rounded-xl sm:rounded-2xl md:rounded-[32px] lg:rounded-[40px] xl:rounded-[48px] 2xl:rounded-[56px] overflow-hidden min-h-[400px] lg:min-h-[500px] xl:min-h-[600px]">
                 <video
                     autoPlay
                     loop
@@ -172,21 +172,21 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-[#1F1919]/10"></div>
 
                 {/* Badge */}
-                <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 lg:top-6 lg:left-6 xl:top-8 xl:left-8 2xl:top-10 2xl:left-10 bg-white/90 backdrop-blur-sm rounded-md sm:rounded-lg md:rounded-xl lg:rounded-2xl xl:rounded-3xl 2xl:rounded-[32px] px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-5 lg:py-3 xl:px-6 xl:py-4 2xl:px-8 2xl:py-5 z-30 flex items-center gap-1 sm:gap-1.5 md:gap-2 lg:gap-2.5 xl:gap-3 2xl:gap-4 shadow-lg">
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-10 lg:h-10 xl:w-12 xl:h-12 2xl:w-14 2xl:h-14 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
-                        <svg width="12" height="12" className="sm:w-3 sm:h-3 md:w-4 md:h-4 lg:w-5 lg:h-5 xl:w-6 xl:h-6 2xl:w-7 2xl:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div className="absolute top-2 left-2 sm:top-3 sm:left-3 md:top-4 md:left-4 lg:top-4 lg:left-4 xl:top-6 xl:left-6 2xl:top-10 2xl:left-10 bg-white/90 backdrop-blur-sm rounded-md sm:rounded-lg md:rounded-xl lg:rounded-xl xl:rounded-2xl 2xl:rounded-[32px] px-2 py-1.5 sm:px-2.5 sm:py-2 md:px-3 md:py-2.5 lg:px-4 lg:py-2.5 xl:px-5 xl:py-3 2xl:px-8 2xl:py-5 z-30 flex items-center gap-1 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2.5 2xl:gap-4 shadow-lg">
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-10 xl:h-10 2xl:w-14 2xl:h-14 rounded-full bg-gray-200 flex items-center justify-center flex-shrink-0">
+                        <svg width="12" height="12" className="sm:w-3 sm:h-3 md:w-4 md:h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-7 2xl:h-7" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="#4B5563"/>
                         </svg>
                     </div>
                     <div className="text-[#1F1919]">
-                        <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-base xl:text-lg 2xl:text-xl font-bold mb-0 sm:mb-0.5 md:mb-0.5 lg:mb-1 xl:mb-1.5 2xl:mb-2 leading-tight">07-09 December 2027</p>
-                        <p className="text-[8px] sm:text-[9px] md:text-[9px] lg:text-[10px] xl:text-xs 2xl:text-sm text-[#1F1919]/70 leading-tight">Parc des Expositions - Hall 6 - Villepinte</p>
+                        <p className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base 2xl:text-xl font-bold mb-0 sm:mb-0.5 md:mb-0.5 lg:mb-0.5 xl:mb-1 2xl:mb-2 leading-tight">07-09 December 2027</p>
+                        <p className="text-[8px] sm:text-[9px] md:text-[9px] lg:text-[9px] xl:text-[10px] 2xl:text-sm text-[#1F1919]/70 leading-tight">Parc des Expositions - Hall 6 - Villepinte</p>
                     </div>
                 </div>
 
                 {/* SVG Mask Bubble - Top Right */}
-                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 lg:top-6 lg:right-6 xl:top-8 xl:right-8 2xl:top-10 2xl:right-10 z-20 group">
-                    <svg width="250" height="188" viewBox="0 0 151 103" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[80px] h-[60px] sm:w-[100px] sm:h-[75px] md:w-[120px] md:h-[90px] lg:w-[180px] lg:h-[135px] xl:w-[220px] xl:h-[165px] 2xl:w-[250px] 2xl:h-[188px]">
+                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 lg:top-4 lg:right-4 xl:top-6 xl:right-6 2xl:top-10 2xl:right-10 z-20 group">
+                    <svg width="250" height="188" viewBox="0 0 151 103" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-[80px] h-[60px] sm:w-[100px] sm:h-[75px] md:w-[120px] md:h-[90px] lg:w-[140px] lg:h-[105px] xl:w-[180px] xl:h-[135px] 2xl:w-[250px] 2xl:h-[188px]">
                         <defs>
                             <clipPath id="imageClip">
                                 <rect x="16" y="16" width="60.4" height="71" rx="8" />
@@ -222,19 +222,19 @@ export default function Hero() {
                 </div>
 
                 {/* Bottom Right Socials */}
-                <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 md:bottom-4 md:right-4 lg:bottom-6 lg:right-6 xl:bottom-8 xl:right-8 2xl:bottom-10 2xl:right-10 flex flex-col lg:flex-row items-end lg:items-center gap-1 sm:gap-1.5 md:gap-2 lg:gap-3 xl:gap-4 2xl:gap-5 text-[#F0F0F0] z-20">
-                    <div className="flex gap-1 sm:gap-1.5 md:gap-2 lg:gap-2.5 xl:gap-3 2xl:gap-4">
-                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
-                            <Image src="/images/X.svg" alt="X (Twitter)" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 brightness-0 invert" />
+                <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 md:bottom-4 md:right-4 lg:bottom-4 lg:right-4 xl:bottom-6 xl:right-6 2xl:bottom-10 2xl:right-10 flex flex-col lg:flex-row items-end lg:items-center gap-1 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-3 2xl:gap-4 text-[#F0F0F0] z-20">
+                    <div className="flex gap-1 sm:gap-1.5 md:gap-2 lg:gap-2 xl:gap-2.5 2xl:gap-3">
+                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                            <Image src="/images/X.svg" alt="X (Twitter)" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6 brightness-0 invert" />
                         </a>
-                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
-                            <Image src="/images/011-linkedin.svg" alt="LinkedIn" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 brightness-0 invert" />
+                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                            <Image src="/images/011-linkedin.svg" alt="LinkedIn" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6 brightness-0 invert" />
                         </a>
-                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-9 lg:h-9 xl:w-10 xl:h-10 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
-                            <Image src="/images/021-youtube.svg" alt="YouTube" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-4 lg:h-4 xl:w-5 xl:h-5 2xl:w-6 2xl:h-6 brightness-0 invert" />
+                        <a href="#" className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 xl:w-9 xl:h-9 2xl:w-12 2xl:h-12 rounded-full border border-[#F0F0F0]/30 flex items-center justify-center backdrop-blur-sm hover:bg-[#F0F0F0]/10 transition-colors">
+                            <Image src="/images/021-youtube.svg" alt="YouTube" width={20} height={20} className="w-2.5 h-2.5 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5 lg:w-3.5 lg:h-3.5 xl:w-4 xl:h-4 2xl:w-6 2xl:h-6 brightness-0 invert" />
                         </a>
                     </div>
-                    <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-sm xl:text-base 2xl:text-lg font-medium hidden lg:inline">Find us on social networks</span>
+                    <span className="text-[9px] sm:text-[10px] md:text-xs lg:text-xs xl:text-sm 2xl:text-lg font-medium hidden lg:inline">Find us on social networks</span>
                 </div>
 
             </div>

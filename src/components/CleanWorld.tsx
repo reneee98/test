@@ -9,7 +9,7 @@ if (typeof window !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const welcomeText = "Discover innovative solutions that highlight the industry's ability to address global challenges while engaging with leaders who are driving decarbonization, innovation, and economic growth, boldly shaping the sustainable future of nuclear energy.";
+const welcomeText = "Discover innovative solutions that highlight the industry's ability to address global challenges and shape the future of nuclear energy.";
 
 export default function CleanWorld() {
     const sectionRef = useRef<HTMLElement>(null);

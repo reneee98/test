@@ -168,13 +168,11 @@ export default function Navbar() {
         };
     }, [isCompact]);
 
-    // Farby podľa stavu - text sa mení podľa brightness pozadia lišty
+    // Na vrchu stránky (rozbalené menu) vždy čierne linky; pri scrolle (kompaktná lišta) podľa pozadia
     const getTextColor = () => {
         if (!isCompact) {
-            return isDarkBackground ? 'text-white' : 'text-[#1F1919]';
+            return 'text-[#1F1919]';
         }
-        
-        // Pre kompaktnú lištu - zistíme brightness z navbarBg
         const bgMatch = navbarBg.match(/\d+/g);
         if (bgMatch && bgMatch.length >= 3) {
             const r = parseInt(bgMatch[0]);
@@ -189,7 +187,7 @@ export default function Navbar() {
     const textColorClass = getTextColor();
     const hamburgerBgClass = isCompact
         ? (textColorClass === 'text-white' ? 'bg-white' : 'bg-[#1F1919]')
-        : (isDarkBackground ? 'bg-white' : 'bg-[#1F1919]');
+        : 'bg-[#1F1919]';
 
     return (
         <nav 
@@ -199,7 +197,7 @@ export default function Navbar() {
             } ${
                 isCompact
                     ? 'px-6 lg:px-12 py-3 lg:py-3.5 backdrop-blur-xl border-b border-white/10 shadow-2xl'
-                    : 'px-4 lg:px-6 xl:px-8 2xl:px-12 py-6 lg:py-8 xl:py-10 2xl:py-12 min-h-[100px] lg:min-h-[120px] xl:min-h-[140px] 2xl:min-h-[160px]'
+                    : 'px-4 lg:px-5 xl:px-6 2xl:px-8 py-4 lg:py-5 xl:py-6 2xl:py-8 min-h-[72px] lg:min-h-[80px] xl:min-h-[96px] 2xl:min-h-[120px]'
             }`}
             style={isCompact ? { backgroundColor: navbarBg } : {}}
         >
@@ -221,7 +219,7 @@ export default function Navbar() {
                         className={`w-auto object-contain transition-all duration-300 ${
                             isCompact 
                                 ? 'h-8 lg:h-10' 
-                                : 'h-16 lg:h-20 xl:h-24 2xl:h-28'
+                                : 'h-12 lg:h-14 xl:h-16 2xl:h-24'
                         }`}
                         priority
                     />
@@ -283,7 +281,7 @@ const AboutDropdown = ({ textColorClass, isCompact }: AboutDropdownProps) => {
     const triggerClasses = `rounded-full font-medium transition-all duration-300 ${textColorClass} ${
         isCompact
             ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}`
-            : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+            : 'px-3 lg:px-4 xl:px-5 2xl:px-6 py-1.5 lg:py-2 xl:py-2.5 2xl:py-3 text-sm lg:text-sm xl:text-base 2xl:text-lg hover:bg-white/20'
     }`;
     const panelClasses = isDark
         ? 'bg-[#1F1919] rounded-2xl shadow-[4px_4px_0_0_rgba(215,223,33,0.15)] border border-white/5'
@@ -334,7 +332,7 @@ const ExhibitionDropdown = ({ textColorClass, isCompact }: ExhibitionDropdownPro
     const triggerClasses = `rounded-full font-medium transition-all duration-300 ${textColorClass} ${
         isCompact
             ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}`
-            : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+            : 'px-3 lg:px-4 xl:px-5 2xl:px-6 py-1.5 lg:py-2 xl:py-2.5 2xl:py-3 text-sm lg:text-sm xl:text-base 2xl:text-lg hover:bg-white/20'
     }`;
     const panelClasses = isDark
         ? 'bg-[#1F1919] rounded-2xl shadow-[4px_4px_0_0_rgba(215,223,33,0.15)] border border-white/5'
@@ -385,7 +383,7 @@ const ProgramDropdown = ({ textColorClass, isCompact }: ProgramDropdownProps) =>
     const triggerClasses = `rounded-full font-medium transition-all duration-300 ${textColorClass} ${
         isCompact
             ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}`
-            : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+            : 'px-3 lg:px-4 xl:px-5 2xl:px-6 py-1.5 lg:py-2 xl:py-2.5 2xl:py-3 text-sm lg:text-sm xl:text-base 2xl:text-lg hover:bg-white/20'
     }`;
     const panelClasses = isDark
         ? 'bg-[#1F1919] rounded-2xl shadow-[4px_4px_0_0_rgba(215,223,33,0.15)] border border-white/5'
@@ -448,7 +446,7 @@ const NavLink = ({ href, children, active, textColor, isCompact }: NavLinkProps)
             className={`rounded-full font-medium transition-all duration-300 ${textColor} ${
                 isCompact 
                     ? `px-3 lg:px-4 py-1 lg:py-1.5 text-xs lg:text-sm ${hoverBgColor} ${hoverTextColor}` 
-                    : 'px-4 lg:px-5 xl:px-6 2xl:px-7 py-2 lg:py-2.5 xl:py-3 text-sm lg:text-base xl:text-lg 2xl:text-xl hover:bg-white/20'
+                    : 'px-3 lg:px-4 xl:px-5 2xl:px-6 py-1.5 lg:py-2 xl:py-2.5 2xl:py-3 text-sm lg:text-sm xl:text-base 2xl:text-lg hover:bg-white/20'
             } ${
                 active ? 'bg-white/80 backdrop-blur-sm' : ''
             }`}
