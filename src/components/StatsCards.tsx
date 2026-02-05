@@ -99,7 +99,7 @@ export default function StatsCards() {
                         ref={descriptionRef}
                         className="text-white/70 text-sm lg:text-base xl:text-lg 2xl:text-xl leading-relaxed max-w-2xl xl:max-w-3xl 2xl:max-w-4xl font-light"
                     >
-                        WNE 2025 confirms its status as the leading nuclear exhibition, with remarkable figures that demonstrate the global industry's commitment to innovation, safety, and the advancement of sustainable, decarbonized energy solutions.
+                        WNE 2025 confirms its status as the world's leading nuclear exhibition, with remarkable figures that demonstrate the global industry's commitment to innovation, safety, and the advancement of sustainable, decarbonized energy solutions.
                     </p>
                 </div>
 
