@@ -12,37 +12,37 @@ const speakers = [
         image: '/images/portretovky/portrait-png.png'
     },
     {
-        name: 'ROLAND LESCURE',
+        name: 'CATHERINE LESCURE',
         role: 'Vice-President Energy Transition, EDF',
         image: '/images/portretovky/portrait2.png'
     },
     {
-        name: 'SYLVIE BERMANN',
+        name: 'SYLVAIN BERMANN',
         role: 'Technical Director, French Nuclear Safety Authority (ASN)',
         image: '/images/portretovky/portrait3.png'
     },
     {
-        name: 'CÉDRIC KLAPISCH',
+        name: 'CÉCILE LEFEBVRE',
         role: 'Executive Director, Framatome',
         image: '/images/portretovky/portrait-png.png'
     },
     {
-        name: 'ELISHA KARMITZ',
+        name: 'ELISE KARMITZ',
         role: 'Head of Business Development, Orano',
         image: '/images/portretovky/portrait2.png'
     },
     {
-        name: 'ANA GIRARDOT',
+        name: 'ANTOINE GIRARD',
         role: 'Head of R&D, IAEA Division of Nuclear Power',
         image: '/images/portretovky/portrait3.png'
     },
     {
-        name: 'BRUNO PATINO',
+        name: 'BRIGITTE MOREAU',
         role: 'Vice-President New Build, Westinghouse',
         image: '/images/portretovky/portrait-png.png'
     },
     {
-        name: 'JUNIE LAU',
+        name: 'JULIE LAU',
         role: 'Technical Director, CEA',
         image: '/images/portretovky/portrait2.png'
     },
@@ -52,7 +52,7 @@ const speakers = [
         image: '/images/portretovky/portrait3.png'
     },
     {
-        name: 'JEAN-PIERRE DARROUSSIN',
+        name: 'JULIE MERCIER',
         role: 'Head of R&D, Assystem',
         image: '/images/portretovky/portrait-png.png'
     },
@@ -62,7 +62,7 @@ const speakers = [
         image: '/images/portretovky/portrait2.png'
     },
     {
-        name: 'LÉA SEYDOUX',
+        name: 'LOUIS SEYDOUX',
         role: 'Vice-President Innovation & New Nuclear, Urenco',
         image: '/images/portretovky/portrait3.png'
     },
