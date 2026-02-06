@@ -212,7 +212,7 @@ export default function Navbar() {
             <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
                 <Link href="/" className="flex items-center">
                     <Image
-                        src="/images/LogoWNE25Dates_dea1f1b6-70a0-4c01-a7ea-3738839c479d-1-1024x985 1.png"
+                        src="/images/logo-wne.png"
                         alt="Logo"
                         width={360}
                         height={360}
